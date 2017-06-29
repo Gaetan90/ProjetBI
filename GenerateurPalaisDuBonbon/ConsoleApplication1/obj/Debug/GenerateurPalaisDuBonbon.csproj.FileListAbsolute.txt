@@ -1,0 +1,12 @@
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\obj\Debug\GenerateurPalaisDuBonbon.csprojResolveAssemblyReference.cache
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Exia A3\projet BI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Exia A3\projet BI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Exia A3\projet BI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
