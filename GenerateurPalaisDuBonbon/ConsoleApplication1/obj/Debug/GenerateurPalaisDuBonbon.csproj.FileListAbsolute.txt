@@ -10,3 +10,6 @@ D:\Exia A3\projet BI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\Cons
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
