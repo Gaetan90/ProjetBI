@@ -19,8 +19,6 @@ namespace GenerateurPalaisDuBonbon
         public int Conditionnement { get; set; }
         public int IdCommande { get; set; }
 
-
-
         public LigneDeCommande(int idCommande, int nom, int couleur, int variante, int texture, int conditionnement)
         {
             idCommande = this.idCommande;

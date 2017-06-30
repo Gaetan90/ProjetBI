@@ -9,16 +9,26 @@ namespace GenerateurPalaisDuBonbon
 {
     class Commande
     {
-        private int id;
+        // id de la commande ainsi que pays où la commande devra être livrée
+        private int idCommande, pays;
 
+        // date de création de la commande
+        private String dateCommande;
+
+        // contiendra les "lignes de commandes" de la commande
         private List<LigneDeCommande> LignesDeCommandes;
         
-        public Commande(int id)
+        public Commande(int idCommande, String dateCommande, int pays)
         {
-            id = this.id;
+            idCommande = this.idCommande;
+            dateCommande = this.dateCommande;
+            pays = this.pays;
             LignesDeCommandes = new List<LigneDeCommande>();
         }
 
+        /**
+         * Ajoute une ligne de commande à la commande
+         */
         public void ajouterLigne(LigneDeCommande ligne)
         {
             LignesDeCommandes.Add(ligne);
