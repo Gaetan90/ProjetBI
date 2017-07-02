@@ -1,3 +1,0 @@
-c:\users\thoma\onedrive\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-c:\users\thoma\onedrive\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\GenerateurPalaisDuSucre.exe.config
-D:\Exia A3\projet BI\GenerateurPalaisDuSucre\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
