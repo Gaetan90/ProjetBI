@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e900b3cb5f044e6b5327aad5c5043be" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.BONBONS" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMMANDES" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONDITIONNEMENT" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONTENANTS" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COULEURS" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LIGNESCOMMANDES" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PAYS" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEXTURES" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSPORTS" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VARIANTES" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDBONBON" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMANDES_IDPAYS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCOMMANDE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CONDITIONNEMENT_IDCONTENANT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDMACHINECONDI" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCONTENANT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCOULEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDTEXTURE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDVARIANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PAYS_IDTRANSPORT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
