@@ -139,7 +139,7 @@ CREATE TABLE Couleurs(
 CREATE TABLE Commandes(
         idCommande   NUMBER GENERATED ALWAYS AS IDENTITY ,
         numCommande  Varchar (25) NOT NULL ,
-        dateCommande Date NOT NULL ,
+        dateCommande Varchar NOT NULL ,
         idPays       Int NOT NULL ,
         CONSTRAINT PK_COMMANDES PRIMARY KEY (idCommande )
 )
