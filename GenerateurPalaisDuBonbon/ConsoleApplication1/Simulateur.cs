@@ -32,8 +32,7 @@ namespace GenerateurPalaisDuBonbon
                     }
                 }
 
-                // TODO : sélection d'une machine parmi la liste
-                // ajout de la machine à la ligne de commande, et de la ligne de commande à la machine;
+                // TODO : ajout de la machine à la ligne de commande, et de la ligne de commande à la machine;
 
                 // on set l'attribut "machine" de la ligne de commande en choisissant une machine aléatoire parmi machinesAChoisir 
                 ligne.Machine = machinesAChoisir[rnd.Next(0,machinesAChoisir.Count()-1)];
