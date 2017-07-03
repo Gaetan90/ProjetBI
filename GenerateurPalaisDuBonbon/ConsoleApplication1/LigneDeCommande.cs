@@ -13,7 +13,8 @@ namespace GenerateurPalaisDuBonbon
         public int nomBonbon { get; set; }
         public int couleur { get; set; }
         public int variante { get; set; }
-        public Machine machine { get; set; }
+        public Machine machineFab { get; set; }
+        public Machine machineCond { get; set; }
         public int texture { get; set; }
         public int conditionnement { get; set; }
         public int idCommande { get; set; }
