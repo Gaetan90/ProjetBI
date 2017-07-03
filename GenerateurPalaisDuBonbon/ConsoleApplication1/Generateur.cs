@@ -33,7 +33,7 @@ namespace GenerateurPalaisDuBonbon
 
         public static Commande CommandeCreation (int idcommande)
         {
-            int nombre, nomBonbon, couleur, variante, texture, conditionnement, pays;
+            int nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement, pays;
 
             pays = rnd.Next(1, 35);
 
@@ -44,17 +44,17 @@ namespace GenerateurPalaisDuBonbon
             for (int i = 0; i < rnd.Next(1, 10); i++)
             {
                 // On génère les valeurs aléatoirement
-                nombre = rnd.Next(1, 501);
+                nombreBonbons = rnd.Next(1, 501);
                 nomBonbon = rnd.Next(1, 28);
                 couleur = rnd.Next(1, 9);
                 variante = rnd.Next(1, 4);
                 texture = rnd.Next(1, 3);
                 conditionnement = rnd.Next(1, 4);
-                
 
-                temp = new LigneDeCommande(idcommande, nomBonbon, couleur, variante, texture, conditionnement);
 
-                Console.WriteLine("[" + idcommande + "," + nomBonbon + "," + couleur + "," + variante + "," + texture + 
+                temp = new LigneDeCommande(idcommande, nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement);
+
+                Console.WriteLine("[" + idcommande + "," + nombreBonbons + "," + nomBonbon + "," + couleur + "," + variante + "," + texture + 
                                                                             "," + conditionnement + "]\n"); // Pour les tests
 
                 commande.ajouterLigne(temp);

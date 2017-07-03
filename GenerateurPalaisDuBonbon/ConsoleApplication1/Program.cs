@@ -11,7 +11,14 @@ namespace GenerateurPalaisDuBonbon
         static void Main(string[] args)
         {
 
-            List<Commande> pool = GenerateurPalaisDuBonbon.Generateur.PoolCreation();
+            //List<Commande> pool = GenerateurPalaisDuBonbon.Generateur.PoolCreation();
+
+            Commande commande = new Commande(1, "03/07/2017", 1);
+            LigneDeCommande ligne = new LigneDeCommande(1, 10, 1, 1, 1, 1, 1);
+            commande.ajouterLigne(ligne);
+
+            Console.WriteLine(Simulateur.simulerProductionCommande(commande));
+            Console.Read();
         }
     }
 }

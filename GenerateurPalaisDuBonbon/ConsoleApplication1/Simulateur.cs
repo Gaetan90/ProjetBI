@@ -11,39 +11,90 @@ namespace GenerateurPalaisDuBonbon
         // Objet random
         public static Random rnd = new Random();
 
-        public int simulerProductionCommande(Commande commande)
+        public static double simulerProductionCommande(Commande commande)
         {
-            int nbLignes = commande.NbLignes; // Nombre de lignes dans la commande
-            List<Machine> machinesAChoisir = new List<Machine>(); // liste qui contiendra les machines viables pour chaque ligne
+            double resultat = 0; // temps nécessaire pour produire la commande
             
-            Machine[] machines;
-            machines = Machine.creationMachines();
-            List<LigneDeCommande> commandes = commande.LignesDeCommandes;
+            IDictionary<int, double> dictionnaire = new Dictionary<int, double>(); // dictionnaire qui contiendra "tempsFabri/idMachine"
+
+            int nbLignes = commande.nbLignes; // Nombre de lignes dans la commande
+            List<Machine> machinesAChoisir; // liste qui contiendra les machines viables pour chaque ligne
+
+            int tmp;
+            //Machine[] machines = Machine.creationMachines();
+            Machine[] machines = Machine.creationMachines();
+            List<LigneDeCommande> commandes = commande.lignesDeCommandes;
+            
+            if (commandes == null)
+            {
+                return -1;
+            }
 
             // on sélectionne les lignes de commande une par une
             foreach (LigneDeCommande ligne in commandes)
             {
+                machinesAChoisir = new List<Machine>();
                 // On récupère les machines viables pour cette ligne de commande
                 foreach (Machine machine in machines)
                 {
-                    if(machine.Variante == ligne.Variante)
+                    machinesAChoisir.Add(machine);
+                    if(machine.variante == ligne.variante)
                     {
                         machinesAChoisir.Add(machine);
                     }
                 }
 
-                // TODO : ajout de la machine à la ligne de commande, et de la ligne de commande à la machine;
+                // On prend une machine aléatoirement parmi les machinesAChoisir
+                tmp = rnd.Next(machinesAChoisir.Count());
 
                 // on set l'attribut "machine" de la ligne de commande en choisissant une machine aléatoire parmi machinesAChoisir 
-                ligne.Machine = machinesAChoisir[rnd.Next(0,machinesAChoisir.Count()-1)];
+                ligne.machine = machinesAChoisir[tmp];
 
-                // TODO nécessaire d'ajouter des id aux machines afin de savoir laquelle est choisie ?
+                // Ajout de la ligne à la machine
+                machinesAChoisir[tmp].ajouterLigne(ligne);
 
-
+                // TODO La machine "double" doit simplement voire ses 2 temps aditionnés lors du calcul du simulateur
 
             }
+            
+            // On parcourt toutes les machines en lisant leurs Queues pour ressortir le temps total
+            foreach (Machine machine in machines)
+            {
+                // On ajoute une clé LinkingID au dictionnaire si elle n'est pas encore présente
+                if(!dictionnaire.ContainsKey(machine.idMachine))
+                {
+                    dictionnaire.Add(machine.idMachine, 0);
+                }          
+                foreach (LigneDeCommande ligne in machine.machineQueue)
+                {
+                    resultat += (machine.cadence * ligne.nombreBonbons);
+                    if (ligne.nomBonbon != machine.tete)
+                    {
+                        resultat += machine.delai;
+                        machine.tete = ligne.nomBonbon;
+                    }
+                    dictionnaire[machine.idMachine] += resultat;
+                    resultat = 0;
+                }              
+            }
 
-            return 1;
+            // On met le temps du chemin critique dans le resultat
+            foreach (KeyValuePair<int, double> kvp in dictionnaire)
+            {
+                if (resultat < kvp.Value)
+                {
+                    resultat = kvp.Value;
+                }
+            }
+
+            // on clean les lignes associées aux machines
+            foreach (Machine machine in machines)
+            {
+                machine.machineQueue = new List<LigneDeCommande>();
+                machine.queueTaille = 0;
+            }
+
+            return resultat;
         }
     }
 }
