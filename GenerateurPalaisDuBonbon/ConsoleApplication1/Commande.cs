@@ -16,14 +16,21 @@ namespace GenerateurPalaisDuBonbon
         private String dateCommande;
 
         // contiendra les "lignes de commandes" de la commande
-        private List<LigneDeCommande> LignesDeCommandes;
-        
+        private List<LigneDeCommande> lignesDeCommandes;
+
+        // Variable pour stocker le nombre de lignes de commandes dans la commande
+        private int nbLignes = 0;
+
+        public List<LigneDeCommande> LignesDeCommandes { get; set; }
+
+        public int NbLignes { get; set; }
+
         public Commande(int idCommande, String dateCommande, int pays)
         {
             idCommande = this.idCommande;
             dateCommande = this.dateCommande;
             pays = this.pays;
-            LignesDeCommandes = new List<LigneDeCommande>();
+            lignesDeCommandes = new List<LigneDeCommande>();
         }
 
         /**
@@ -31,7 +38,8 @@ namespace GenerateurPalaisDuBonbon
          */
         public void ajouterLigne(LigneDeCommande ligne)
         {
-            LignesDeCommandes.Add(ligne);
+            lignesDeCommandes.Add(ligne);
+            nbLignes++;
         }
 
 

@@ -24,7 +24,7 @@ CREATE TABLE Variantes(
         CONSTRAINT PK_VARIANTES PRIMARY KEY (idVariante )
 )
 
-
+/
 -- ============================================================
 --   Table : TEXTURES                                     
 -- ============================================================
@@ -35,7 +35,7 @@ CREATE TABLE Textures(
         CONSTRAINT PK_TEXTURES PRIMARY KEY (idTexture )
 )
 
-
+/
 -- ============================================================
 --   Table : CONTENANTSPARCARTON                                     
 -- ============================================================
@@ -47,7 +47,7 @@ CREATE TABLE ContenantsParCarton(
         CONSTRAINT PK_CONTENANTSPARCARTON PRIMARY KEY (idContenantpCarton )
 )
 
-
+/
 -- ============================================================
 --   Table : CONDITIONNEMENT                                     
 -- ============================================================
@@ -61,7 +61,7 @@ CREATE TABLE Conditionnement(
         CONSTRAINT PK_CONDITIONNEMENT PRIMARY KEY (idMachineCondi )
 )
 
-
+/
 -- ============================================================
 --   Table : CARTONSPARPALETTE                                      
 -- ============================================================
@@ -73,7 +73,7 @@ CREATE TABLE CartonsParPalette(
         CONSTRAINT PK_CARTONSPARPALETTE PRIMARY KEY (idCartonPalette )
 )
 
-
+/
 -- ============================================================
 --   Table : BONBONS                                      
 -- ============================================================
@@ -88,14 +88,16 @@ CREATE TABLE Bonbons(
         sucreBonbon      Int NOT NULL ,
         CONSTRAINT PK_BONBONS PRIMARY KEY (idBonbon )
 )
-
+/
 -- ============================================================
---   Table : CONTENUCOMMANDES                                 
+--   Table : LIGNESCOMMANDES                                 
 -- ============================================================
 
-CREATE TABLE ContenuCommandes(
+CREATE TABLE LignesCommandes(
         idContenuCommande NUMBER GENERATED ALWAYS AS IDENTITY ,
         nbContenants      Int NOT NULL ,
+        tempsFab	      Int NOT NULL ,
+        tempsCondi	      Int NOT NULL ,
         idCommande        Int NOT NULL ,
         idContenant       Int NOT NULL ,
         idBonbon          Int NOT NULL ,
@@ -107,7 +109,7 @@ CREATE TABLE ContenuCommandes(
         CONSTRAINT PK_CONTENUCOMMANDES PRIMARY KEY (idContenuCommande )
 )
 
-
+/
 -- ============================================================
 --   Table : CONTENANTS                                      
 -- ============================================================
@@ -118,7 +120,7 @@ CREATE TABLE Contenants(
         nbBonbons    Int NOT NULL ,
         CONSTRAINT PK_CONTENANTS PRIMARY KEY (idContenant )
 )
-
+/
 -- ============================================================
 --   Table : COULEURS                                      
 -- ============================================================
@@ -128,7 +130,7 @@ CREATE TABLE Couleurs(
         nomCouleur Varchar (25) NOT NULL ,
         CONSTRAINT PK_COULEURS PRIMARY KEY (idCouleur )
 )
-
+/
 
 -- ============================================================
 --   Table : COMMANDES                                      
@@ -136,13 +138,13 @@ CREATE TABLE Couleurs(
 
 CREATE TABLE Commandes(
         idCommande   NUMBER GENERATED ALWAYS AS IDENTITY ,
-        nomCommande  Varchar (25) NOT NULL ,
+        numCommande  Varchar (25) NOT NULL ,
         dateCommande Date NOT NULL ,
         idPays       Int NOT NULL ,
         CONSTRAINT PK_COMMANDES PRIMARY KEY (idCommande )
 )
 
-
+/
 -- ============================================================
 --   Table : PAYS                                      
 -- ============================================================
@@ -153,7 +155,7 @@ CREATE TABLE Pays(
         idTransport Int NOT NULL ,
         CONSTRAINT PK_PAYS PRIMARY KEY (idPays )
 )
-
+/
 
 -- ============================================================
 --   Table : TRANSPORTS                                     
@@ -167,7 +169,7 @@ CREATE TABLE Transports(
         CONSTRAINT PK_TRANSPORTS PRIMARY KEY (idTransport )
 )
 
-
+/
 -- ============================================================
 --   Table : PRIX                                      
 -- ============================================================
@@ -178,51 +180,37 @@ CREATE TABLE Prix(
         idBonbon    Int NOT NULL ,
         CONSTRAINT PK_PRIX PRIMARY KEY (idContenant ,idBonbon )
 )
-
-ALTER TABLE Fabrication ADD CONSTRAINT FK_Fabrication_idVariante FOREIGN KEY (idVariante) REFERENCES Variantes(idVariante)
 /
 
-ALTER TABLE ContenantsParCarton ADD CONSTRAINT FK_ContenantsParCarton_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant)
+ALTER TABLE Fabrication ADD CONSTRAINT FK_Fabrication_idVariante FOREIGN KEY (idVariante) REFERENCES Variantes(idVariante);
 /
-
-ALTER TABLE Conditionnement ADD CONSTRAINT FK_Conditionnement_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant)
+ALTER TABLE ContenantsParCarton ADD CONSTRAINT FK_ContenantsParCarton_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant);
 /
-
-ALTER TABLE CartonsParPalette ADD CONSTRAINT FK_CartonsParPalette_idTransport FOREIGN KEY (idTransport) REFERENCES Transports(idTransport)
+ALTER TABLE Conditionnement ADD CONSTRAINT FK_Conditionnement_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idCommande FOREIGN KEY (idCommande) REFERENCES Commandes(idCommande)
+ALTER TABLE CartonsParPalette ADD CONSTRAINT FK_CartonsParPalette_idTransport FOREIGN KEY (idTransport) REFERENCES Transports(idTransport);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idCommande FOREIGN KEY (idCommande) REFERENCES Commandes(idCommande);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idBonbon FOREIGN KEY (idBonbon) REFERENCES Bonbons(idBonbon)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idVariante FOREIGN KEY (idVariante) REFERENCES Variantes(idVariante)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idBonbon FOREIGN KEY (idBonbon) REFERENCES Bonbons(idBonbon);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idTexture FOREIGN KEY (idTexture) REFERENCES Textures(idTexture)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idVariante FOREIGN KEY (idVariante) REFERENCES Variantes(idVariante);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idCouleur FOREIGN KEY (idCouleur) REFERENCES Couleurs(idCouleur)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idTexture FOREIGN KEY (idTexture) REFERENCES Textures(idTexture);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idMachineFab FOREIGN KEY (idMachineFab) REFERENCES Fabrication(idMachineFab)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idCouleur FOREIGN KEY (idCouleur) REFERENCES Couleurs(idCouleur);
 /
-
-ALTER TABLE ContenuCommandes ADD CONSTRAINT FK_ContenuCommandes_idMachineCondi FOREIGN KEY (idMachineCondi) REFERENCES Conditionnement(idMachineCondi)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idMachineFab FOREIGN KEY (idMachineFab) REFERENCES Fabrication(idMachineFab);
 /
-
-ALTER TABLE Commandes ADD CONSTRAINT FK_Commandes_idPays FOREIGN KEY (idPays) REFERENCES Pays(idPays)
+ALTER TABLE LignesCommandes ADD CONSTRAINT FK_LignesCommandes_idMachineCondi FOREIGN KEY (idMachineCondi) REFERENCES Conditionnement(idMachineCondi);
 /
-
-ALTER TABLE Pays ADD CONSTRAINT FK_Pays_idTransport FOREIGN KEY (idTransport) REFERENCES Transports(idTransport)
+ALTER TABLE Commandes ADD CONSTRAINT FK_Commandes_idPays FOREIGN KEY (idPays) REFERENCES Pays(idPays);
 /
-
-ALTER TABLE Prix ADD CONSTRAINT FK_Prix_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant)
+ALTER TABLE Pays ADD CONSTRAINT FK_Pays_idTransport FOREIGN KEY (idTransport) REFERENCES Transports(idTransport);
 /
-
-ALTER TABLE Prix ADD CONSTRAINT FK_Prix_idBonbon FOREIGN KEY (idBonbon) REFERENCES Bonbons(idBonbon)
+ALTER TABLE Prix ADD CONSTRAINT FK_Prix_idContenant FOREIGN KEY (idContenant) REFERENCES Contenants(idContenant);
+/
+ALTER TABLE Prix ADD CONSTRAINT FK_Prix_idBonbon FOREIGN KEY (idBonbon) REFERENCES Bonbons(idBonbon);
 /

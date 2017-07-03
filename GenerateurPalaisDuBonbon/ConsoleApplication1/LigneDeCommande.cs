@@ -8,13 +8,14 @@ namespace GenerateurPalaisDuBonbon
 {
     class LigneDeCommande
     {
-        
-        private int nombre, nomBonbon, couleur, variante, texture, conditionnement, idCommande;
+
+        private int nombre, nomBonbon, couleur, variante, texture, conditionnement, machine, idCommande;
 
         public int Nombre { get; set; }
         public int NomBonbon { get; set; }
         public int Couleur { get; set; }
         public int Variante { get; set; }
+        public Machine Machine { get; set; }
         public int Texture { get; set; }
         public int Conditionnement { get; set; }
         public int IdCommande { get; set; }
@@ -28,8 +29,5 @@ namespace GenerateurPalaisDuBonbon
             texture = this.texture;
             conditionnement = this.conditionnement;
         }
-        
-
-
     }
 }
