@@ -24,6 +24,8 @@ namespace GenerateurPalaisDuBonbon
             //Machine[] machines = Machine.creationMachines();
             Machine[] machines = Machine.creationMachines();
             List<LigneDeCommande> commandes = commande.lignesDeCommandes;
+
+            int multiplicateur; // multiplicateur utilisé pour calculer le nombre de bonbons selon le conditionnement
             
             if (commandes == null)
             {
@@ -66,11 +68,34 @@ namespace GenerateurPalaisDuBonbon
                 }          
                 foreach (LigneDeCommande ligne in machine.machineQueue)
                 {
-                    resultat += (machine.cadence * ligne.nombreBonbons);
+                    // selon le conditionnement, on adapte le nombre de bonbons qui vont devoir passer à la machine
+                    if(ligne.conditionnement == 1)
+                    {
+                        // sachet = 10 bonbons
+                        multiplicateur = 10;
+                    } else if (ligne.conditionnement == 2)
+                    {
+                        // boite = 25 bonbons
+                        multiplicateur = 25;
+                    } else
+                    {
+                        // échantillon = 1 bonbon
+                        multiplicateur = 1;
+                    }
+                    resultat += (machine.cadence * ligne.nombreConditionnements * multiplicateur);
                     if (ligne.nomBonbon != machine.tete)
                     {
                         resultat += machine.delai;
                         machine.tete = ligne.nomBonbon;
+                        // On vérifie qu'il ne s'agisse pas d'une machine double
+                        // Si c'est une machine double, on change également l'attribut tête de sa ou ses paires
+                        foreach (Machine machinesMultiples in machines)
+                        {
+                            if(machinesMultiples.idMachine == machine.idMachine)
+                            {
+                                machinesMultiples.tete = ligne.nomBonbon;
+                            }
+                        }
                     }
                     dictionnaire[machine.idMachine] += resultat;
                     resultat = 0;
