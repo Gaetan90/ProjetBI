@@ -37,7 +37,6 @@ namespace GenerateurPalaisDuBonbon
                 // On récupère les machines viables pour cette ligne de commande
                 foreach (Machine machine in machines)
                 {
-                    machinesAChoisir.Add(machine);
                     if(machine.variante == ligne.variante)
                     {
                         machinesAChoisir.Add(machine);
@@ -81,6 +80,7 @@ namespace GenerateurPalaisDuBonbon
             // On met le temps du chemin critique dans le resultat
             foreach (KeyValuePair<int, double> kvp in dictionnaire)
             {
+                Console.WriteLine("Temps passé dans la machine : " + kvp.Value);
                 if (resultat < kvp.Value)
                 {
                     resultat = kvp.Value;
