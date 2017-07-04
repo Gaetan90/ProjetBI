@@ -96,6 +96,11 @@ namespace GenerateurPalaisDuBonbon
                     tmpCommande.TEMPSFABTOTAL = (decimal) commande.tempsFab;
                     tmpCommande.TEMPSCONDITOTAL = (decimal) commande.tempsCond;
 
+                    // push
+                    cnx.COMMANDES.Add(tmpCommande);
+                    // commit
+                    cnx.SaveChanges();
+
                     foreach (LigneDeCommande ligne in commande.lignesDeCommandes)
                     {
                         // On rentre les données de chaque ligne de commande
@@ -107,15 +112,14 @@ namespace GenerateurPalaisDuBonbon
                         tmpLigne.IDVARIANTE = ligne.variante;
                         tmpLigne.IDTEXTURE = ligne.texture;
                         tmpLigne.IDCOULEUR = ligne.couleur;
+                        tmpLigne.IDCOMMANDE = tmpCommande.IDCOMMANDE;
                         // TODO TEMPSFAB et TEMPSCONDI
-                        tmpLignes.Add(tmpLigne);
-                    }
-                    tmpCommande.LIGNESCOMMANDES = tmpLignes;
-                    // commit
-                    cnx.COMMANDES.Add(tmpCommande);                    
+                        // commit
+                        cnx.LIGNESCOMMANDES.Add(tmpLigne);
+                        // push
+                        cnx.SaveChanges();
+                    }                  
                 }
-                // push
-                cnx.SaveChanges();
             }
         }
     }
