@@ -42,8 +42,8 @@ CREATE TABLE Textures(
 
 CREATE TABLE ContenantsParCarton(
         idContenantpCarton NUMBER GENERATED ALWAYS AS IDENTITY ,
-        nbContenantpCarton Int NOT NULL ,
-        idContenant        Int NOT NULL ,
+        nbContenantpCarton NUMBER NOT NULL ,
+        idContenant        NUMBER NOT NULL ,
         CONSTRAINT PK_CONTENANTSPARCARTON PRIMARY KEY (idContenantpCarton )
 )
 
@@ -55,9 +55,9 @@ CREATE TABLE ContenantsParCarton(
 CREATE TABLE Conditionnement(
         idMachineCondi      NUMBER GENERATED ALWAYS AS IDENTITY ,
         nomMachineCondi     Varchar (25) NOT NULL ,
-        cadenceMachineCondi Int NOT NULL ,
-        delaiMachineCondi   Int NOT NULL ,
-        idContenant         Int NOT NULL ,
+        cadenceMachineCondi NUMBER NOT NULL ,
+        delaiMachineCondi   NUMBER NOT NULL ,
+        idContenant         NUMBER NOT NULL ,
         CONSTRAINT PK_CONDITIONNEMENT PRIMARY KEY (idMachineCondi )
 )
 
@@ -68,8 +68,8 @@ CREATE TABLE Conditionnement(
 
 CREATE TABLE CartonsParPalette(
         idCartonPalette  NUMBER GENERATED ALWAYS AS IDENTITY ,
-        nbCartonpPalette Int NOT NULL ,
-        idTransport      Int NOT NULL ,
+        nbCartonpPalette NUMBER NOT NULL ,
+        idTransport      NUMBER NOT NULL ,
         CONSTRAINT PK_CARTONSPARPALETTE PRIMARY KEY (idCartonPalette )
 )
 
@@ -81,11 +81,16 @@ CREATE TABLE CartonsParPalette(
 CREATE TABLE Bonbons(
         idBonbon         NUMBER GENERATED ALWAYS AS IDENTITY ,
         nomBonbon        Varchar (40) NOT NULL ,
-        additifsBonbon   Int NOT NULL ,
-        enrobageBonbon   Int NOT NULL ,
-        aromeBonbon      Int NOT NULL ,
-        gelifiantsBonbon Int NOT NULL ,
-        sucreBonbon      Int NOT NULL ,
+        additifsBonbon   NUMBER NOT NULL ,
+        enrobageBonbon   NUMBER NOT NULL ,
+        aromeBonbon      NUMBER NOT NULL ,
+        gelifiantsBonbon NUMBER NOT NULL ,
+        sucreBonbon      NUMBER NOT NULL ,
+        coutFabrication      NUMBER NULL ,
+        coutConditionnement      NUMBER NULL ,
+        fraisExpedition      NUMBER NULL ,
+        fraisGeneraux      NUMBER NULL ,
+        lastRepartitionBonbon      FLOAT NULL ,
         CONSTRAINT PK_BONBONS PRIMARY KEY (idBonbon )
 )
 /
@@ -95,17 +100,17 @@ CREATE TABLE Bonbons(
 
 CREATE TABLE LignesCommandes(
         idContenuCommande NUMBER GENERATED ALWAYS AS IDENTITY ,
-        nbContenants      Int NOT NULL ,
-        tempsFab	      Int NULL ,
-        tempsCondi	      Int NULL ,
-        idCommande        Int NOT NULL ,
-        idContenant       Int NOT NULL ,
-        idBonbon          Int NOT NULL ,
-        idVariante        Int NOT NULL ,
-        idTexture         Int NOT NULL ,
-        idCouleur         Int NOT NULL ,
-        idMachineFab      Int NULL ,
-        idMachineCondi    Int NULL ,
+        nbContenants      NUMBER NOT NULL ,
+        tempsFab	      NUMBER NULL ,
+        tempsCondi	      NUMBER NULL ,
+        idCommande        NUMBER NOT NULL ,
+        idContenant       NUMBER NOT NULL ,
+        idBonbon          NUMBER NOT NULL ,
+        idVariante        NUMBER NOT NULL ,
+        idTexture         NUMBER NOT NULL ,
+        idCouleur         NUMBER NOT NULL ,
+        idMachineFab      NUMBER NULL ,
+        idMachineCondi    NUMBER NULL ,
         CONSTRAINT PK_CONTENUCOMMANDES PRIMARY KEY (idContenuCommande )
 )
 
@@ -117,7 +122,7 @@ CREATE TABLE LignesCommandes(
 CREATE TABLE Contenants(
         idContenant  NUMBER GENERATED ALWAYS AS IDENTITY ,
         nomContenant Varchar (25) NOT NULL ,
-        nbBonbons    Int NOT NULL ,
+        nbBonbons    NUMBER NOT NULL ,
         CONSTRAINT PK_CONTENANTS PRIMARY KEY (idContenant )
 )
 /
@@ -140,7 +145,9 @@ CREATE TABLE Commandes(
         idCommande   NUMBER GENERATED ALWAYS AS IDENTITY ,
         numCommande  Varchar (25) NOT NULL ,
         dateCommande Varchar (25) NOT NULL ,
-        idPays       Int NOT NULL ,
+        idPays       NUMBER NOT NULL ,
+        tempsFabTotal      NUMBER NULL ,
+        tempsCondiTotal      NUMBER NULL ,
         CONSTRAINT PK_COMMANDES PRIMARY KEY (idCommande )
 )
 /
@@ -151,7 +158,8 @@ CREATE TABLE Commandes(
 CREATE TABLE Pays(
         idPays      NUMBER GENERATED ALWAYS AS IDENTITY ,
         nomPays     Varchar (25) NOT NULL ,
-        idTransport Int NOT NULL ,
+        lastRepartitionPays FLOAT NULL ,
+        idTransport NUMBER NOT NULL ,
         CONSTRAINT PK_PAYS PRIMARY KEY (idPays )
 )
 /
@@ -163,8 +171,8 @@ CREATE TABLE Pays(
 CREATE TABLE Transports(
         idTransport         NUMBER GENERATED ALWAYS AS IDENTITY ,
         nomTransport        Varchar (25) NOT NULL ,
-        coutTransport       Float NOT NULL ,
-        contenanceTransport Int NOT NULL ,
+        coutTransport       FLOAT NOT NULL ,
+        contenanceTransport NUMBER NOT NULL ,
         CONSTRAINT PK_TRANSPORTS PRIMARY KEY (idTransport )
 )
 
@@ -174,9 +182,10 @@ CREATE TABLE Transports(
 -- ============================================================
 
 CREATE TABLE Prix(
-        prix        NUMBER GENERATED ALWAYS AS IDENTITY ,
-        idContenant Int NOT NULL ,
-        idBonbon    Int NOT NULL ,
+        idPrix        NUMBER GENERATED ALWAYS AS IDENTITY ,
+        prix FLOAT NOT NULL ,
+        idContenant NUMBER NOT NULL ,
+        idBonbon    NUMBER NOT NULL ,
         CONSTRAINT PK_PRIX PRIMARY KEY (idContenant ,idBonbon )
 )
 /
