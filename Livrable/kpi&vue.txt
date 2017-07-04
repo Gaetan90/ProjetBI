@@ -1,0 +1,22 @@
+Fabrication : nbBonbon/jour,
+	      Machine-Variante/Cadence
+	      Machine-variante/délaiChangO
+-----------------------------------------------------------------
+Conditionement : Machine-Packaging/Cadence
+	         Machine-packaging/délaiChangO
+	         NbPackaging/jour
+------------------------------------------------------------------
+Préparation commandes : (courbe)NbCommandes/date
+			~~Tps/Commandes~~
+------------------------------------------------------------------
+Expedition:	(cambert) Pays/trsp
+		trsp/repartition(%)
+		~~pays/prixTrsp~~
+------------------------------------------------------------------
+Achat		(cambert) Bonbon/repartition(%)
+		Bonbon/coutFab,coutExp, CoutCondi,FraisGénéR (a mettre par prix de vente)
+		Bonbon/prix de vente pr Sachet, boite, unitaire(echantillon)
+-------------------------------------------------------------------
+Maintenance	NbChangemOutils/jrs
+-------------------------------------------------------------------
+* Sans indication graphique = Histogramme	
