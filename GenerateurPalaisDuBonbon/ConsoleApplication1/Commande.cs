@@ -10,7 +10,11 @@ namespace GenerateurPalaisDuBonbon
     class Commande
     {
         // id de la commande ainsi que pays où la commande devra être livrée
-        private int idCommande;
+        public int idCommande { get; set; }
+
+        public double tempsFab { get; set; }
+
+        public double tempsCond { get; set; }
 
         public int pays { get; set; }
 

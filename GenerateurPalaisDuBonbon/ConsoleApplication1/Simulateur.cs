@@ -16,7 +16,7 @@ namespace GenerateurPalaisDuBonbon
          * @param commande
          * @return double temps en secondes
          */
-        public static double simulerProductionCommande(Commande commande)
+        public static double simulerFabricationCommande(Commande commande)
         {
             double resultat = 0; // temps nécessaire pour produire la commande
             
@@ -108,7 +108,6 @@ namespace GenerateurPalaisDuBonbon
             // On met le temps du chemin critique dans le resultat
             foreach (KeyValuePair<int, double> kvp in dictionnaire)
             {
-                Console.WriteLine("Temps passé dans la machine : " + kvp.Value);
                 if (resultat < kvp.Value)
                 {
                     resultat = kvp.Value;
@@ -121,6 +120,7 @@ namespace GenerateurPalaisDuBonbon
                 machine.machineQueue = new List<LigneDeCommande>();
                 machine.queueTaille = 0;
             }
+            commande.tempsFab = resultat;
 
             return resultat;
         }
@@ -228,7 +228,6 @@ namespace GenerateurPalaisDuBonbon
             // On met le temps du chemin critique dans le resultat
             foreach (KeyValuePair<int, double> kvp in dictionnaire)
             {
-                Console.WriteLine("Temps passé dans la machine : " + kvp.Value);
                 if (resultat < kvp.Value)
                 {
                     resultat = kvp.Value;
@@ -241,6 +240,21 @@ namespace GenerateurPalaisDuBonbon
                 machine.machineQueue = new List<LigneDeCommande>();
                 machine.queueTaille = 0;
             }
+            commande.tempsCond = resultat;
+
+            return resultat;
+        }
+
+        public double simulerPickingCommande(Commande commande)
+        {
+            // nombre de secondes nécessaires au minimum par Carton pour faire toute la chaine
+            // le temps d'une boucle étant réduit à 380 secondes au lieu de 400 secondes
+            // pour le simulateur puisque nous comptons déjà les 20 secondes étant rajoutées
+            // en cas de non-redirection d'un carton dans une boucle.
+            double resultat = 200 * commande.nbLignes;
+
+            // création des docks
+            //List<Dock> docks = genererDocks();
 
             return resultat;
         }

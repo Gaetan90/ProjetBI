@@ -18,6 +18,7 @@ namespace GenerateurPalaisDuBonbon
         public int texture { get; set; }
         public int conditionnement { get; set; }
         public int idCommande { get; set; }
+        public Boolean estEmpaquetee { get; set; }
 
         public LigneDeCommande(int idCommande, int nombreConditionnements, int nomBonbon, int couleur, int variante, int texture, int conditionnement)
         {
@@ -28,6 +29,7 @@ namespace GenerateurPalaisDuBonbon
             this.variante = variante;
             this.texture = texture;
             this.conditionnement = conditionnement;
+            this.estEmpaquetee = false;
         }
     }
 }
