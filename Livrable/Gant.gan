@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-06-20" view-index="0" gantt-divider-location="709" resource-divider-location="300" version="2.8.5" locale="fr_FR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-06-20" view-index="0" gantt-divider-location="722" resource-divider-location="300" version="2.8.5" locale="fr">
     <description/>
     <view zooming-state="default:1" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="313" order="0"/>
-        <field id="tpd4" name="Date de début" width="189" order="1"/>
-        <field id="tpd5" name="Date de fin" width="188" order="2"/>
-        <option id="color.recent"><![CDATA[#0000ff #999999 #000000 #ff0000 #333333 #ff00ff #660066 #f4f4f4 #ccff00 #00ff00]]></option>
+        <field id="tpd3" name="Nom" width="317" order="0"/>
+        <field id="tpd4" name="Date de début" width="193" order="1"/>
+        <field id="tpd5" name="Date de fin" width="193" order="2"/>
+        <option id="color.recent"><![CDATA[#ffff00 #0000ff #999999 #000000 #ff0000 #333333 #ff00ff #660066 #f4f4f4 #ccff00]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nom" width="210" order="0"/>
@@ -46,23 +46,25 @@
                 <task id="2" name="Elaboration dictionnaires de données" color="#ffff00" meeting="false" start="2017-06-29" duration="1" complete="0" expand="true"/>
                 <task id="3" name="Elaboration MCD - MPD" color="#ff9900" meeting="false" start="2017-06-29" duration="2" complete="0" expand="true"/>
             </task>
-            <task id="4" name="Mettre en place Oracle" meeting="false" start="2017-06-29" duration="2" complete="0" expand="true">
+            <task id="4" name="Mettre en place Oracle" meeting="false" start="2017-06-29" duration="3" complete="0" expand="true">
                 <task id="5" name="Installation" color="#ffff00" meeting="false" start="2017-06-29" duration="1" complete="0" expand="true"/>
                 <task id="6" name="Configuration" color="#ffff00" meeting="false" start="2017-06-29" duration="1" complete="0" expand="true"/>
                 <task id="7" name="Conception Instances" color="#ffff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
+                <task id="47" name="Mettre en place le jeu de données" color="#ffff00" meeting="false" start="2017-07-03" duration="1" complete="0" expand="true"/>
             </task>
             <task id="13" name="Mettre en place MongoDb" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true">
                 <task id="14" name="Installation" color="#ffff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
                 <task id="15" name="Configuration" color="#ffff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="8" name="Mettre en place ETL" meeting="false" start="2017-06-29" duration="2" complete="0" expand="true">
+            <task id="8" name="Mettre en place ETL" meeting="false" start="2017-06-29" duration="4" complete="0" expand="true">
                 <task id="9" name="Réalisation POC Technologie" color="#00ff00" meeting="false" start="2017-06-29" duration="1" complete="0" expand="true"/>
                 <task id="10" name="Installation" color="#ccff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
                 <task id="11" name="Configuration" color="#ccff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
                 <task id="12" name="Connection Oracle - MongoDb" color="#ccff00" meeting="false" start="2017-06-30" duration="1" complete="0" expand="true"/>
+                <task id="51" name="Transfère des données" color="#ffff00" meeting="false" start="2017-07-03" duration="2" complete="0" expand="true"/>
             </task>
-            <task id="16" name="Mettre en place Middleware - WebService" meeting="false" start="2017-06-30" duration="3" complete="0" expand="true">
-                <task id="17" name="Installations" color="#00ff00" meeting="false" start="2017-06-30" duration="2" complete="0" expand="true"/>
+            <task id="16" name="Mettre en place Middleware - WebService" meeting="false" start="2017-07-03" duration="2" complete="0" expand="true">
+                <task id="17" name="Installations" color="#00ff00" meeting="false" start="2017-07-03" duration="1" complete="0" expand="true"/>
                 <task id="18" name="Configuration" color="#00ff00" meeting="false" start="2017-07-03" duration="1" complete="0" expand="true"/>
                 <task id="19" name="Connexion Oracle - Application" color="#33ffff" meeting="false" start="2017-07-03" duration="2" complete="0" expand="true"/>
             </task>
