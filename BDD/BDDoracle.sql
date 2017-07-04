@@ -96,16 +96,16 @@ CREATE TABLE Bonbons(
 CREATE TABLE LignesCommandes(
         idContenuCommande NUMBER GENERATED ALWAYS AS IDENTITY ,
         nbContenants      Int NOT NULL ,
-        tempsFab	      Int NOT NULL ,
-        tempsCondi	      Int NOT NULL ,
+        tempsFab	      Int NULL ,
+        tempsCondi	      Int NULL ,
         idCommande        Int NOT NULL ,
         idContenant       Int NOT NULL ,
         idBonbon          Int NOT NULL ,
         idVariante        Int NOT NULL ,
         idTexture         Int NOT NULL ,
         idCouleur         Int NOT NULL ,
-        idMachineFab      Int NOT NULL ,
-        idMachineCondi    Int NOT NULL ,
+        idMachineFab      Int NULL ,
+        idMachineCondi    Int NULL ,
         CONSTRAINT PK_CONTENUCOMMANDES PRIMARY KEY (idContenuCommande )
 )
 
@@ -139,11 +139,10 @@ CREATE TABLE Couleurs(
 CREATE TABLE Commandes(
         idCommande   NUMBER GENERATED ALWAYS AS IDENTITY ,
         numCommande  Varchar (25) NOT NULL ,
-        dateCommande Varchar NOT NULL ,
+        dateCommande Varchar (25) NOT NULL ,
         idPays       Int NOT NULL ,
         CONSTRAINT PK_COMMANDES PRIMARY KEY (idCommande )
 )
-
 /
 -- ============================================================
 --   Table : PAYS                                      
