@@ -302,7 +302,15 @@ namespace GenerateurPalaisDuBonbon
                 
             }
             // On ajoute le temsp de sorti du picking
-            tmpCommande += 40;
+            if (lastGare < 21)
+            {
+                tmpCommande += (20 - lastGare) * 20 + 40;
+            }else
+            {
+                tmpCommande += (40 - lastGare) * 20 + 40;
+            }
+                
+                
 
             commande.tempsPicking = tmpCommande;
 
