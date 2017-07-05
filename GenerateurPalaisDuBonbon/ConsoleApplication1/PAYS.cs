@@ -22,10 +22,11 @@ namespace ConsoleApplication1
     
         public decimal IDPAYS { get; set; }
         public string NOMPAYS { get; set; }
+        public Nullable<decimal> LASTREPARTITIONPAYS { get; set; }
         public decimal IDTRANSPORT { get; set; }
     
+        public virtual TRANSPORTS TRANSPORTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMMANDES> COMMANDES { get; set; }
-        public virtual TRANSPORTS TRANSPORTS { get; set; }
     }
 }

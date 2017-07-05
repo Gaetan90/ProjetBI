@@ -14,6 +14,7 @@ namespace ConsoleApplication1
     
     public partial class PRIX
     {
+        public decimal IDPRIX { get; set; }
         public decimal PRIX1 { get; set; }
         public decimal IDCONTENANT { get; set; }
         public decimal IDBONBON { get; set; }

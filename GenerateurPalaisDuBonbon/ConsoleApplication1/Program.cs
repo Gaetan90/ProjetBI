@@ -19,8 +19,8 @@ namespace GenerateurPalaisDuBonbon
                 Simulateur.simulerConditionnementCommande(com);
                 Simulateur.simulerPickingCommande(com);
             }
-            //Generateur.pushPool(pool);
-
+            Generateur.pushPool(pool);
+            
             /*
             Commande commande = new Commande(1, "03/07/2017", 1);
             

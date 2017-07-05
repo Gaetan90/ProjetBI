@@ -1,14 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
     <EntitySetMapping Name="BONBONS">
       <EntityTypeMapping TypeName="Model.BONBONS">
         <MappingFragment StoreEntitySet="BONBONS">
-          <ScalarProperty Name="LASTREPARTITIONBONBON" ColumnName="LASTREPARTITIONBONBON" />
-          <ScalarProperty Name="FRAISGENERAUX" ColumnName="FRAISGENERAUX" />
-          <ScalarProperty Name="FRAISEXPEDITION" ColumnName="FRAISEXPEDITION" />
-          <ScalarProperty Name="COUTCONDITIONNEMENT" ColumnName="COUTCONDITIONNEMENT" />
-          <ScalarProperty Name="COUTFABRICATION" ColumnName="COUTFABRICATION" />
           <ScalarProperty Name="IDBONBON" ColumnName="IDBONBON" />
           <ScalarProperty Name="NOMBONBON" ColumnName="NOMBONBON" />
           <ScalarProperty Name="ADDITIFSBONBON" ColumnName="ADDITIFSBONBON" />
@@ -16,6 +11,11 @@
           <ScalarProperty Name="AROMEBONBON" ColumnName="AROMEBONBON" />
           <ScalarProperty Name="GELIFIANTSBONBON" ColumnName="GELIFIANTSBONBON" />
           <ScalarProperty Name="SUCREBONBON" ColumnName="SUCREBONBON" />
+          <ScalarProperty Name="COUTFABRICATION" ColumnName="COUTFABRICATION" />
+          <ScalarProperty Name="COUTCONDITIONNEMENT" ColumnName="COUTCONDITIONNEMENT" />
+          <ScalarProperty Name="FRAISEXPEDITION" ColumnName="FRAISEXPEDITION" />
+          <ScalarProperty Name="FRAISGENERAUX" ColumnName="FRAISGENERAUX" />
+          <ScalarProperty Name="LASTREPARTITIONBONBON" ColumnName="LASTREPARTITIONBONBON" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -31,13 +31,13 @@
     <EntitySetMapping Name="COMMANDES">
       <EntityTypeMapping TypeName="Model.COMMANDES">
         <MappingFragment StoreEntitySet="COMMANDES">
-          <ScalarProperty Name="TEMPSPICKING" ColumnName="TEMPSPICKING" />
-          <ScalarProperty Name="TEMPSCONDITOTAL" ColumnName="TEMPSCONDITOTAL" />
-          <ScalarProperty Name="TEMPSFABTOTAL" ColumnName="TEMPSFABTOTAL" />
           <ScalarProperty Name="IDCOMMANDE" ColumnName="IDCOMMANDE" />
           <ScalarProperty Name="NUMCOMMANDE" ColumnName="NUMCOMMANDE" />
           <ScalarProperty Name="DATECOMMANDE" ColumnName="DATECOMMANDE" />
           <ScalarProperty Name="IDPAYS" ColumnName="IDPAYS" />
+          <ScalarProperty Name="TEMPSFABTOTAL" ColumnName="TEMPSFABTOTAL" />
+          <ScalarProperty Name="TEMPSCONDITOTAL" ColumnName="TEMPSCONDITOTAL" />
+          <ScalarProperty Name="TEMPSPICKING" ColumnName="TEMPSPICKING" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -110,9 +110,9 @@
     <EntitySetMapping Name="PAYS">
       <EntityTypeMapping TypeName="Model.PAYS">
         <MappingFragment StoreEntitySet="PAYS">
-          <ScalarProperty Name="LASTREPARTITIONPAYS" ColumnName="LASTREPARTITIONPAYS" />
           <ScalarProperty Name="IDPAYS" ColumnName="IDPAYS" />
           <ScalarProperty Name="NOMPAYS" ColumnName="NOMPAYS" />
+          <ScalarProperty Name="LASTREPARTITIONPAYS" ColumnName="LASTREPARTITIONPAYS" />
           <ScalarProperty Name="IDTRANSPORT" ColumnName="IDTRANSPORT" />
         </MappingFragment>
       </EntityTypeMapping>

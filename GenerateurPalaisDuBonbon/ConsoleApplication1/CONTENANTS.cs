@@ -19,8 +19,8 @@ namespace ConsoleApplication1
         {
             this.CONDITIONNEMENT = new HashSet<CONDITIONNEMENT>();
             this.CONTENANTSPARCARTON = new HashSet<CONTENANTSPARCARTON>();
-            this.LIGNESCOMMANDES = new HashSet<LIGNESCOMMANDES>();
             this.PRIX = new HashSet<PRIX>();
+            this.LIGNESCOMMANDES = new HashSet<LIGNESCOMMANDES>();
         }
     
         public decimal IDCONTENANT { get; set; }
@@ -32,8 +32,8 @@ namespace ConsoleApplication1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONTENANTSPARCARTON> CONTENANTSPARCARTON { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LIGNESCOMMANDES> LIGNESCOMMANDES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRIX> PRIX { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LIGNESCOMMANDES> LIGNESCOMMANDES { get; set; }
     }
 }

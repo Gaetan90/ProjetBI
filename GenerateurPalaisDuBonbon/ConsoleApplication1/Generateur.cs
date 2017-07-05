@@ -11,9 +11,6 @@ namespace GenerateurPalaisDuBonbon
 {
     class Generateur
     {
-        // Date de la commande qui est directement mise par défaut au 30 juin 2017
-        public static String dateCommande = "30/06/2017";
-
         // Objet random
         public static Random rnd = new Random();
 
@@ -24,12 +21,20 @@ namespace GenerateurPalaisDuBonbon
         {
             List<Commande> pool = new List<Commande>();
             int idcommandes = 1000; // On démarre les ID par 1000
+            String dateCommande;
+            int jour = 1, mois = 1, annee = 2017;
 
             for (int i = 0; i < 10; i++)
             {
-                pool.Add(commandeAleatoireCreation(idcommandes + i));
-            }
-            
+                dateCommande = (jour + "/" + mois + "/" + annee).ToString();
+                pool.Add(commandeAleatoireCreation((idcommandes + i), dateCommande));
+                jour++;
+                if (jour == 31)
+                {
+                    jour = 1;
+                    mois++;
+                }
+            }            
             return pool;
         }
 
@@ -40,12 +45,20 @@ namespace GenerateurPalaisDuBonbon
         {
             List<Commande> pool = new List<Commande>();
             int idcommandes = 1000; // On démarre les ID par 1000
+            String dateCommande;
+            int jour = 1, mois = 1, annee = 2017;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
-                pool.Add(commandeCreation(idcommandes + i));
+                dateCommande = (jour + "/" + mois + "/" + annee).ToString();
+                pool.Add(commandeCreation((idcommandes + i), dateCommande));
+                jour++;
+                if(jour == 31)
+                {
+                    jour = 1;
+                    mois++;
+                }
             }
-
             return pool;
         }
 
@@ -59,12 +72,14 @@ namespace GenerateurPalaisDuBonbon
             int ratioTotal;
             double resultatProba;
             double trancheLimite;
+            String tmpProbaPays;
             IDictionary<int, double> dictionnaire = new Dictionary<int, double>();
             int paysMax = int.Parse(ConfigurationManager.AppSettings["paysMax"]);
 
             for (int j = 1; j < (paysMax + 1); j++)
             {
-                dictionnaire.Add(j, double.Parse(ConfigurationManager.AppSettings[("probaPays" + j).ToString()]));
+                tmpProbaPays = ConfigurationManager.AppSettings[(("probaPays" + j).ToString())];
+                dictionnaire.Add(j,Double.Parse(tmpProbaPays));
             }
 
             ratioTotal = 100; // on travaille en pourcentage
@@ -81,7 +96,41 @@ namespace GenerateurPalaisDuBonbon
             return paysMax; // retourne la dernière valeur au cas où aucune de celles d'avant n'aient été retournées
         }
 
-        public static Commande commandeCreation(int idcommande)
+        /**
+         * Renvoie l'ID d'un pays générée aléatoirement à l'aide des pondérations
+         * présentes dans le fichier de configuration
+         */
+        public static int genererTypesBonbons()
+        {
+
+            int ratioTotal;
+            double resultatProba;
+            double trancheLimite;
+            String tmpProbaType;
+            IDictionary<int, double> dictionnaire = new Dictionary<int, double>();
+            int typesMax = int.Parse(ConfigurationManager.AppSettings["typesMax"]);
+
+            for (int j = 1; j < (typesMax + 1); j++)
+            {
+                tmpProbaType = ConfigurationManager.AppSettings[(("probaTypeBonbon" + j).ToString())];
+                dictionnaire.Add(j, Double.Parse(tmpProbaType));
+            }
+
+            ratioTotal = 100; // on travaille en pourcentage
+            resultatProba = rnd.NextDouble() * ratioTotal;
+            trancheLimite = 0;
+            foreach (KeyValuePair<int, double> kvp in dictionnaire)
+            {
+                trancheLimite += kvp.Value;
+                if (resultatProba <= trancheLimite)
+                {
+                    return kvp.Key;
+                }
+            }
+            return typesMax; // retourne la dernière valeur au cas où aucune de celles d'avant n'aient été retournées
+        }
+
+        public static Commande commandeCreation(int idcommande, String dateCommande)
         {
             int nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement;
 
@@ -90,7 +139,6 @@ namespace GenerateurPalaisDuBonbon
             int varianteBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreVariantesBonbons"]);
             int textureBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreTexturesBonbons"]);
             int conditionnementBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreConditionnementsBonbons"]);
-            
             
             Commande commande = new Commande(idcommande, dateCommande, genererPays());
             LigneDeCommande temp;
@@ -118,7 +166,10 @@ namespace GenerateurPalaisDuBonbon
             return commande;
         }
 
-        public static Commande commandeAleatoireCreation(int idcommande)
+        /**
+         * Génération d'une commande de façon complètement aléatoire
+         */
+        public static Commande commandeAleatoireCreation(int idcommande, String dateCommande)
         {
             int nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement, pays;
 
@@ -165,7 +216,7 @@ namespace GenerateurPalaisDuBonbon
             LIGNESCOMMANDES tmpLigne;
             ICollection<LIGNESCOMMANDES> tmpLignes;
 
-            using (var cnx = new Entities())
+            using (var cnx = new Entities1())
             {
 
                 foreach (Commande commande in pool)
@@ -173,13 +224,14 @@ namespace GenerateurPalaisDuBonbon
                     tmpLignes = new Collection<LIGNESCOMMANDES>();
                     tmpLigne = new LIGNESCOMMANDES();
                     tmpCommande = new COMMANDES();
-
+                    
                     // On rentre les données des commandes
                     tmpCommande.NUMCOMMANDE = commande.idCommande.ToString();
                     tmpCommande.DATECOMMANDE = commande.dateCommande;
                     tmpCommande.IDPAYS = commande.pays;
                     tmpCommande.TEMPSFABTOTAL = (decimal) commande.tempsFab;
                     tmpCommande.TEMPSCONDITOTAL = (decimal) commande.tempsCond;
+                    tmpCommande.TEMPSPICKING = (decimal) commande.tempsPicking;
 
                     // push
                     cnx.COMMANDES.Add(tmpCommande);
@@ -188,6 +240,7 @@ namespace GenerateurPalaisDuBonbon
 
                     foreach (LigneDeCommande ligne in commande.lignesDeCommandes)
                     {
+
                         // On rentre les données de chaque ligne de commande
                         tmpLigne.NBCONTENANTS = ligne.nombreConditionnements;
                         tmpLigne.IDMACHINEFAB = ligne.machineFab.idMachine;

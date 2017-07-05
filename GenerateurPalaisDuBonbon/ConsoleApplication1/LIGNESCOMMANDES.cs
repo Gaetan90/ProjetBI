@@ -16,16 +16,16 @@ namespace ConsoleApplication1
     {
         public decimal IDCONTENUCOMMANDE { get; set; }
         public decimal NBCONTENANTS { get; set; }
-        public decimal TEMPSFAB { get; set; }
-        public decimal TEMPSCONDI { get; set; }
+        public Nullable<decimal> TEMPSFAB { get; set; }
+        public Nullable<decimal> TEMPSCONDI { get; set; }
         public decimal IDCOMMANDE { get; set; }
         public decimal IDCONTENANT { get; set; }
         public decimal IDBONBON { get; set; }
         public decimal IDVARIANTE { get; set; }
         public decimal IDTEXTURE { get; set; }
         public decimal IDCOULEUR { get; set; }
-        public decimal IDMACHINEFAB { get; set; }
-        public decimal IDMACHINECONDI { get; set; }
+        public Nullable<decimal> IDMACHINEFAB { get; set; }
+        public Nullable<decimal> IDMACHINECONDI { get; set; }
     
         public virtual BONBONS BONBONS { get; set; }
         public virtual COMMANDES COMMANDES { get; set; }

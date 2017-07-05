@@ -16,7 +16,7 @@ namespace GenerateurPalaisDuBonbon
 
         public double tempsCond { get; set; }
 
-        public int tempsPicking { get; set; }
+        public double tempsPicking { get; set; }
 
         public int pays { get; set; }
 

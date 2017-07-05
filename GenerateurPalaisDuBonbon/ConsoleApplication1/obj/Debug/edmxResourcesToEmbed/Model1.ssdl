@@ -112,7 +112,7 @@
       <PropertyRef Name="IDBONBON" />
     </Key>
     <Property Name="IDPRIX" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PRIX" Type="float" Precision="126" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PRIX" Type="float" Precision="126" Scale="0" Nullable="false" />
     <Property Name="IDCONTENANT" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="IDBONBON" Type="number" Precision="38" Scale="0" Nullable="false" />
   </EntityType>
@@ -151,6 +151,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_COMMANDES_IDPAYS">
+    <End Role="PAYS" Type="Self.PAYS" Multiplicity="1" />
+    <End Role="COMMANDES" Type="Self.COMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAYS">
+        <PropertyRef Name="IDPAYS" />
+      </Principal>
+      <Dependent Role="COMMANDES">
+        <PropertyRef Name="IDPAYS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CONDITIONNEMENT_IDCONTENANT">
     <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
     <End Role="CONDITIONNEMENT" Type="Self.CONDITIONNEMENT" Multiplicity="*" />
@@ -183,6 +195,102 @@
         <PropertyRef Name="IDVARIANTE" />
       </Principal>
       <Dependent Role="FABRICATION">
+        <PropertyRef Name="IDVARIANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDBONBON">
+    <End Role="BONBONS" Type="Self.BONBONS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONBONS">
+        <PropertyRef Name="IDBONBON" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDBONBON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCOMMANDE">
+    <End Role="COMMANDES" Type="Self.COMMANDES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMMANDES">
+        <PropertyRef Name="IDCOMMANDE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCOMMANDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCONTENANT">
+    <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENANTS">
+        <PropertyRef Name="IDCONTENANT" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCONTENANT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCOULEUR">
+    <End Role="COULEURS" Type="Self.COULEURS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COULEURS">
+        <PropertyRef Name="IDCOULEUR" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCOULEUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDMACHINECONDI">
+    <End Role="CONDITIONNEMENT" Type="Self.CONDITIONNEMENT" Multiplicity="0..1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDITIONNEMENT">
+        <PropertyRef Name="IDMACHINECONDI" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDMACHINECONDI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDMACHINEFAB">
+    <End Role="FABRICATION" Type="Self.FABRICATION" Multiplicity="0..1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FABRICATION">
+        <PropertyRef Name="IDMACHINEFAB" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDMACHINEFAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDTEXTURE">
+    <End Role="TEXTURES" Type="Self.TEXTURES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEXTURES">
+        <PropertyRef Name="IDTEXTURE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDTEXTURE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDVARIANTE">
+    <End Role="VARIANTES" Type="Self.VARIANTES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VARIANTES">
+        <PropertyRef Name="IDVARIANTE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
         <PropertyRef Name="IDVARIANTE" />
       </Dependent>
     </ReferentialConstraint>
@@ -242,6 +350,10 @@
       <End Role="TRANSPORTS" EntitySet="TRANSPORTS" />
       <End Role="CARTONSPARPALETTE" EntitySet="CARTONSPARPALETTE" />
     </AssociationSet>
+    <AssociationSet Name="FK_COMMANDES_IDPAYS" Association="Self.FK_COMMANDES_IDPAYS">
+      <End Role="PAYS" EntitySet="PAYS" />
+      <End Role="COMMANDES" EntitySet="COMMANDES" />
+    </AssociationSet>
     <AssociationSet Name="FK_CONDITIONNEMENT_IDCONTENANT" Association="Self.FK_CONDITIONNEMENT_IDCONTENANT">
       <End Role="CONTENANTS" EntitySet="CONTENANTS" />
       <End Role="CONDITIONNEMENT" EntitySet="CONDITIONNEMENT" />
@@ -253,6 +365,38 @@
     <AssociationSet Name="FK_FABRICATION_IDVARIANTE" Association="Self.FK_FABRICATION_IDVARIANTE">
       <End Role="VARIANTES" EntitySet="VARIANTES" />
       <End Role="FABRICATION" EntitySet="FABRICATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDBONBON" Association="Self.FK_LIGNESCOMMANDES_IDBONBON">
+      <End Role="BONBONS" EntitySet="BONBONS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCOMMANDE" Association="Self.FK_LIGNESCOMMANDES_IDCOMMANDE">
+      <End Role="COMMANDES" EntitySet="COMMANDES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCONTENANT" Association="Self.FK_LIGNESCOMMANDES_IDCONTENANT">
+      <End Role="CONTENANTS" EntitySet="CONTENANTS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCOULEUR" Association="Self.FK_LIGNESCOMMANDES_IDCOULEUR">
+      <End Role="COULEURS" EntitySet="COULEURS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDMACHINECONDI" Association="Self.FK_LIGNESCOMMANDES_IDMACHINECONDI">
+      <End Role="CONDITIONNEMENT" EntitySet="CONDITIONNEMENT" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDMACHINEFAB" Association="Self.FK_LIGNESCOMMANDES_IDMACHINEFAB">
+      <End Role="FABRICATION" EntitySet="FABRICATION" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDTEXTURE" Association="Self.FK_LIGNESCOMMANDES_IDTEXTURE">
+      <End Role="TEXTURES" EntitySet="TEXTURES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDVARIANTE" Association="Self.FK_LIGNESCOMMANDES_IDVARIANTE">
+      <End Role="VARIANTES" EntitySet="VARIANTES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
     </AssociationSet>
     <AssociationSet Name="FK_PAYS_IDTRANSPORT" Association="Self.FK_PAYS_IDTRANSPORT">
       <End Role="TRANSPORTS" EntitySet="TRANSPORTS" />

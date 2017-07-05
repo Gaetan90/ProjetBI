@@ -26,6 +26,7 @@ namespace ConsoleApplication1
         public decimal IDPAYS { get; set; }
         public Nullable<decimal> TEMPSFABTOTAL { get; set; }
         public Nullable<decimal> TEMPSCONDITOTAL { get; set; }
+        public Nullable<decimal> TEMPSPICKING { get; set; }
     
         public virtual PAYS PAYS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

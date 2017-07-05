@@ -17,8 +17,8 @@ namespace ConsoleApplication1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BONBONS()
         {
-            this.LIGNESCOMMANDES = new HashSet<LIGNESCOMMANDES>();
             this.PRIX = new HashSet<PRIX>();
+            this.LIGNESCOMMANDES = new HashSet<LIGNESCOMMANDES>();
         }
     
         public decimal IDBONBON { get; set; }
@@ -28,10 +28,15 @@ namespace ConsoleApplication1
         public decimal AROMEBONBON { get; set; }
         public decimal GELIFIANTSBONBON { get; set; }
         public decimal SUCREBONBON { get; set; }
+        public Nullable<decimal> COUTFABRICATION { get; set; }
+        public Nullable<decimal> COUTCONDITIONNEMENT { get; set; }
+        public Nullable<decimal> FRAISEXPEDITION { get; set; }
+        public Nullable<decimal> FRAISGENERAUX { get; set; }
+        public Nullable<decimal> LASTREPARTITIONBONBON { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LIGNESCOMMANDES> LIGNESCOMMANDES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRIX> PRIX { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LIGNESCOMMANDES> LIGNESCOMMANDES { get; set; }
     }
 }
