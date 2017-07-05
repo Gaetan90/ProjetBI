@@ -10,26 +10,29 @@ namespace GenerateurPalaisDuBonbon
     class Commande
     {
         // id de la commande ainsi que pays où la commande devra être livrée
-        private int idCommande, pays;
+        public int idCommande { get; set; }
+
+        public double tempsFab { get; set; }
+
+        public double tempsCond { get; set; }
+
+        public double tempsPicking { get; set; }
+
+        public int pays { get; set; }
 
         // date de création de la commande
-        private String dateCommande;
+        public String dateCommande { get; set; }
+        
+        public List<LigneDeCommande> lignesDeCommandes { get; set; }
 
-        // contiendra les "lignes de commandes" de la commande
-        private List<LigneDeCommande> lignesDeCommandes;
-
-        // Variable pour stocker le nombre de lignes de commandes dans la commande
-        private int nbLignes = 0;
-
-        public List<LigneDeCommande> LignesDeCommandes { get; set; }
-
-        public int NbLignes { get; set; }
+        public int nbLignes { get; set; }
 
         public Commande(int idCommande, String dateCommande, int pays)
         {
-            idCommande = this.idCommande;
-            dateCommande = this.dateCommande;
-            pays = this.pays;
+            this.nbLignes = 0;
+            this.idCommande = idCommande;
+            this.dateCommande = dateCommande;
+            this.pays = pays;
             lignesDeCommandes = new List<LigneDeCommande>();
         }
 

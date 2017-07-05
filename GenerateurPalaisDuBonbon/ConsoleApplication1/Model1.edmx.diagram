@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94f0c9095cfd4d08957439421ed2e902" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.BONBONS" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CARTONSPARPALETTE" Width="1.5" PointX="8" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMMANDES" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONDITIONNEMENT" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONTENANTS" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONTENANTSPARCARTON" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COULEURS" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FABRICATION" Width="1.5" PointX="11" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LIGNESCOMMANDES" Width="1.5" PointX="2.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PAYS" Width="1.5" PointX="8" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRIX" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEXTURES" Width="1.5" PointX="8.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSPORTS" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VARIANTES" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_PRIX_IDBONBON" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CARTONSPARPALETTE_IDTRANSPORT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CONDITIONNEMENT_IDCONTENANT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CONTENANTSPARCARTON_IDCONTENANT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PRIX_IDCONTENANT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_FABRICATION_IDVARIANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PAYS_IDTRANSPORT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDBONBON" />
+        <AssociationConnector Association="Model.FK_COMMANDES_IDPAYS" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCOMMANDE" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDMACHINECONDI" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCONTENANT" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDCOULEUR" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDMACHINEFAB" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDTEXTURE" />
+        <AssociationConnector Association="Model.FK_LIGNESCOMMANDES_IDVARIANTE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

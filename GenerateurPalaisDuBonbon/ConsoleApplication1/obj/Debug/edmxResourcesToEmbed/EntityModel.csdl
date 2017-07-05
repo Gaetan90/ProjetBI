@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BONBONS">
+    <Key>
+      <PropertyRef Name="IDBONBON" />
+    </Key>
+    <Property Name="IDBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBONBON" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADDITIFSBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ENROBAGEBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="AROMEBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GELIFIANTSBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SUCREBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDBONBON" FromRole="BONBONS" ToRole="LIGNESCOMMANDES" />
+    <NavigationProperty Name="PRIX" Relationship="Self.FK_PRIX_IDBONBON" FromRole="BONBONS" ToRole="PRIX" />
+    <Property Name="COUTFABRICATION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="COUTCONDITIONNEMENT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FRAISEXPEDITION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FRAISGENERAUX" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LASTREPARTITIONBONBON" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="CARTONSPARPALETTE">
+    <Key>
+      <PropertyRef Name="IDCARTONPALETTE" />
+    </Key>
+    <Property Name="IDCARTONPALETTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NBCARTONPPALETTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDTRANSPORT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="TRANSPORTS" Relationship="Self.FK_CARTONSPARPALETTE_IDTRANSPORT" FromRole="CARTONSPARPALETTE" ToRole="TRANSPORTS" />
+  </EntityType>
+  <EntityType Name="COMMANDES">
+    <Key>
+      <PropertyRef Name="IDCOMMANDE" />
+    </Key>
+    <Property Name="IDCOMMANDE" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NUMCOMMANDE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATECOMMANDE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDPAYS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="PAYS" Relationship="Self.FK_COMMANDES_IDPAYS" FromRole="COMMANDES" ToRole="PAYS" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDCOMMANDE" FromRole="COMMANDES" ToRole="LIGNESCOMMANDES" />
+    <Property Name="TEMPSFABTOTAL" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEMPSCONDITOTAL" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEMPSPICKING" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="CONDITIONNEMENT">
+    <Key>
+      <PropertyRef Name="IDMACHINECONDI" />
+    </Key>
+    <Property Name="IDMACHINECONDI" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMMACHINECONDI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CADENCEMACHINECONDI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DELAIMACHINECONDI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDCONTENANT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CONTENANTS" Relationship="Self.FK_CONDITIONNEMENT_IDCONTENANT" FromRole="CONDITIONNEMENT" ToRole="CONTENANTS" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDMACHINECONDI" FromRole="CONDITIONNEMENT" ToRole="LIGNESCOMMANDES" />
+  </EntityType>
+  <EntityType Name="CONTENANTS">
+    <Key>
+      <PropertyRef Name="IDCONTENANT" />
+    </Key>
+    <Property Name="IDCONTENANT" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMCONTENANT" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NBBONBONS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CONDITIONNEMENT" Relationship="Self.FK_CONDITIONNEMENT_IDCONTENANT" FromRole="CONTENANTS" ToRole="CONDITIONNEMENT" />
+    <NavigationProperty Name="CONTENANTSPARCARTON" Relationship="Self.FK_CONTENANTSPARCARTON_IDCONTENANT" FromRole="CONTENANTS" ToRole="CONTENANTSPARCARTON" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDCONTENANT" FromRole="CONTENANTS" ToRole="LIGNESCOMMANDES" />
+    <NavigationProperty Name="PRIX" Relationship="Self.FK_PRIX_IDCONTENANT" FromRole="CONTENANTS" ToRole="PRIX" />
+  </EntityType>
+  <EntityType Name="CONTENANTSPARCARTON">
+    <Key>
+      <PropertyRef Name="IDCONTENANTPCARTON" />
+    </Key>
+    <Property Name="IDCONTENANTPCARTON" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NBCONTENANTPCARTON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDCONTENANT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CONTENANTS" Relationship="Self.FK_CONTENANTSPARCARTON_IDCONTENANT" FromRole="CONTENANTSPARCARTON" ToRole="CONTENANTS" />
+  </EntityType>
+  <EntityType Name="COULEURS">
+    <Key>
+      <PropertyRef Name="IDCOULEUR" />
+    </Key>
+    <Property Name="IDCOULEUR" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMCOULEUR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDCOULEUR" FromRole="COULEURS" ToRole="LIGNESCOMMANDES" />
+  </EntityType>
+  <EntityType Name="FABRICATION">
+    <Key>
+      <PropertyRef Name="IDMACHINEFAB" />
+    </Key>
+    <Property Name="IDMACHINEFAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMMACHINEFAB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CADENCEMACHINEFAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DELAIMACHINEFAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDVARIANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="VARIANTES" Relationship="Self.FK_FABRICATION_IDVARIANTE" FromRole="FABRICATION" ToRole="VARIANTES" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDMACHINEFAB" FromRole="FABRICATION" ToRole="LIGNESCOMMANDES" />
+  </EntityType>
+  <EntityType Name="LIGNESCOMMANDES">
+    <Key>
+      <PropertyRef Name="IDCONTENUCOMMANDE" />
+    </Key>
+    <Property Name="IDCONTENUCOMMANDE" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NBCONTENANTS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TEMPSFAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TEMPSCONDI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDCOMMANDE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDCONTENANT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDVARIANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDTEXTURE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDCOULEUR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDMACHINEFAB" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDMACHINECONDI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="BONBONS" Relationship="Self.FK_LIGNESCOMMANDES_IDBONBON" FromRole="LIGNESCOMMANDES" ToRole="BONBONS" />
+    <NavigationProperty Name="COMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDCOMMANDE" FromRole="LIGNESCOMMANDES" ToRole="COMMANDES" />
+    <NavigationProperty Name="CONDITIONNEMENT" Relationship="Self.FK_LIGNESCOMMANDES_IDMACHINECONDI" FromRole="LIGNESCOMMANDES" ToRole="CONDITIONNEMENT" />
+    <NavigationProperty Name="CONTENANTS" Relationship="Self.FK_LIGNESCOMMANDES_IDCONTENANT" FromRole="LIGNESCOMMANDES" ToRole="CONTENANTS" />
+    <NavigationProperty Name="COULEURS" Relationship="Self.FK_LIGNESCOMMANDES_IDCOULEUR" FromRole="LIGNESCOMMANDES" ToRole="COULEURS" />
+    <NavigationProperty Name="FABRICATION" Relationship="Self.FK_LIGNESCOMMANDES_IDMACHINEFAB" FromRole="LIGNESCOMMANDES" ToRole="FABRICATION" />
+    <NavigationProperty Name="TEXTURES" Relationship="Self.FK_LIGNESCOMMANDES_IDTEXTURE" FromRole="LIGNESCOMMANDES" ToRole="TEXTURES" />
+    <NavigationProperty Name="VARIANTES" Relationship="Self.FK_LIGNESCOMMANDES_IDVARIANTE" FromRole="LIGNESCOMMANDES" ToRole="VARIANTES" />
+  </EntityType>
+  <EntityType Name="PAYS">
+    <Key>
+      <PropertyRef Name="IDPAYS" />
+    </Key>
+    <Property Name="IDPAYS" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMPAYS" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDTRANSPORT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="COMMANDES" Relationship="Self.FK_COMMANDES_IDPAYS" FromRole="PAYS" ToRole="COMMANDES" />
+    <NavigationProperty Name="TRANSPORTS" Relationship="Self.FK_PAYS_IDTRANSPORT" FromRole="PAYS" ToRole="TRANSPORTS" />
+    <Property Name="LASTREPARTITIONPAYS" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="PRIX">
+    <Key>
+      <PropertyRef Name="IDCONTENANT" />
+      <PropertyRef Name="IDBONBON" />
+    </Key>
+    <Property Name="PRIX1" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCONTENANT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IDBONBON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="BONBONS" Relationship="Self.FK_PRIX_IDBONBON" FromRole="PRIX" ToRole="BONBONS" />
+    <NavigationProperty Name="CONTENANTS" Relationship="Self.FK_PRIX_IDCONTENANT" FromRole="PRIX" ToRole="CONTENANTS" />
+    <Property Name="IDPRIX" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="TEXTURES">
+    <Key>
+      <PropertyRef Name="IDTEXTURE" />
+    </Key>
+    <Property Name="IDTEXTURE" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMTEXTURE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDTEXTURE" FromRole="TEXTURES" ToRole="LIGNESCOMMANDES" />
+  </EntityType>
+  <EntityType Name="TRANSPORTS">
+    <Key>
+      <PropertyRef Name="IDTRANSPORT" />
+    </Key>
+    <Property Name="IDTRANSPORT" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMTRANSPORT" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COUTTRANSPORT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTENANCETRANSPORT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CARTONSPARPALETTE" Relationship="Self.FK_CARTONSPARPALETTE_IDTRANSPORT" FromRole="TRANSPORTS" ToRole="CARTONSPARPALETTE" />
+    <NavigationProperty Name="PAYS" Relationship="Self.FK_PAYS_IDTRANSPORT" FromRole="TRANSPORTS" ToRole="PAYS" />
+  </EntityType>
+  <EntityType Name="VARIANTES">
+    <Key>
+      <PropertyRef Name="IDVARIANTE" />
+    </Key>
+    <Property Name="IDVARIANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMVARIANTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FABRICATION" Relationship="Self.FK_FABRICATION_IDVARIANTE" FromRole="VARIANTES" ToRole="FABRICATION" />
+    <NavigationProperty Name="LIGNESCOMMANDES" Relationship="Self.FK_LIGNESCOMMANDES_IDVARIANTE" FromRole="VARIANTES" ToRole="LIGNESCOMMANDES" />
+  </EntityType>
+  <Association Name="FK_LIGNESCOMMANDES_IDBONBON">
+    <End Role="BONBONS" Type="Self.BONBONS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONBONS">
+        <PropertyRef Name="IDBONBON" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDBONBON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRIX_IDBONBON">
+    <End Role="BONBONS" Type="Self.BONBONS" Multiplicity="1" />
+    <End Role="PRIX" Type="Self.PRIX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONBONS">
+        <PropertyRef Name="IDBONBON" />
+      </Principal>
+      <Dependent Role="PRIX">
+        <PropertyRef Name="IDBONBON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARTONSPARPALETTE_IDTRANSPORT">
+    <End Role="TRANSPORTS" Type="Self.TRANSPORTS" Multiplicity="1" />
+    <End Role="CARTONSPARPALETTE" Type="Self.CARTONSPARPALETTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSPORTS">
+        <PropertyRef Name="IDTRANSPORT" />
+      </Principal>
+      <Dependent Role="CARTONSPARPALETTE">
+        <PropertyRef Name="IDTRANSPORT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMANDES_IDPAYS">
+    <End Role="PAYS" Type="Self.PAYS" Multiplicity="1" />
+    <End Role="COMMANDES" Type="Self.COMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAYS">
+        <PropertyRef Name="IDPAYS" />
+      </Principal>
+      <Dependent Role="COMMANDES">
+        <PropertyRef Name="IDPAYS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCOMMANDE">
+    <End Role="COMMANDES" Type="Self.COMMANDES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMMANDES">
+        <PropertyRef Name="IDCOMMANDE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCOMMANDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONDITIONNEMENT_IDCONTENANT">
+    <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
+    <End Role="CONDITIONNEMENT" Type="Self.CONDITIONNEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENANTS">
+        <PropertyRef Name="IDCONTENANT" />
+      </Principal>
+      <Dependent Role="CONDITIONNEMENT">
+        <PropertyRef Name="IDCONTENANT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDMACHINECONDI">
+    <End Role="CONDITIONNEMENT" Type="Self.CONDITIONNEMENT" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDITIONNEMENT">
+        <PropertyRef Name="IDMACHINECONDI" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDMACHINECONDI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENANTSPARCARTON_IDCONTENANT">
+    <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
+    <End Role="CONTENANTSPARCARTON" Type="Self.CONTENANTSPARCARTON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENANTS">
+        <PropertyRef Name="IDCONTENANT" />
+      </Principal>
+      <Dependent Role="CONTENANTSPARCARTON">
+        <PropertyRef Name="IDCONTENANT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCONTENANT">
+    <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENANTS">
+        <PropertyRef Name="IDCONTENANT" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCONTENANT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRIX_IDCONTENANT">
+    <End Role="CONTENANTS" Type="Self.CONTENANTS" Multiplicity="1" />
+    <End Role="PRIX" Type="Self.PRIX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENANTS">
+        <PropertyRef Name="IDCONTENANT" />
+      </Principal>
+      <Dependent Role="PRIX">
+        <PropertyRef Name="IDCONTENANT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDCOULEUR">
+    <End Role="COULEURS" Type="Self.COULEURS" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COULEURS">
+        <PropertyRef Name="IDCOULEUR" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDCOULEUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FABRICATION_IDVARIANTE">
+    <End Role="VARIANTES" Type="Self.VARIANTES" Multiplicity="1" />
+    <End Role="FABRICATION" Type="Self.FABRICATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VARIANTES">
+        <PropertyRef Name="IDVARIANTE" />
+      </Principal>
+      <Dependent Role="FABRICATION">
+        <PropertyRef Name="IDVARIANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDMACHINEFAB">
+    <End Role="FABRICATION" Type="Self.FABRICATION" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FABRICATION">
+        <PropertyRef Name="IDMACHINEFAB" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDMACHINEFAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDTEXTURE">
+    <End Role="TEXTURES" Type="Self.TEXTURES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEXTURES">
+        <PropertyRef Name="IDTEXTURE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDTEXTURE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIGNESCOMMANDES_IDVARIANTE">
+    <End Role="VARIANTES" Type="Self.VARIANTES" Multiplicity="1" />
+    <End Role="LIGNESCOMMANDES" Type="Self.LIGNESCOMMANDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VARIANTES">
+        <PropertyRef Name="IDVARIANTE" />
+      </Principal>
+      <Dependent Role="LIGNESCOMMANDES">
+        <PropertyRef Name="IDVARIANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAYS_IDTRANSPORT">
+    <End Role="TRANSPORTS" Type="Self.TRANSPORTS" Multiplicity="1" />
+    <End Role="PAYS" Type="Self.PAYS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSPORTS">
+        <PropertyRef Name="IDTRANSPORT" />
+      </Principal>
+      <Dependent Role="PAYS">
+        <PropertyRef Name="IDTRANSPORT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BONBONS" EntityType="Self.BONBONS" />
+    <EntitySet Name="CARTONSPARPALETTE" EntityType="Self.CARTONSPARPALETTE" />
+    <EntitySet Name="COMMANDES" EntityType="Self.COMMANDES" />
+    <EntitySet Name="CONDITIONNEMENT" EntityType="Self.CONDITIONNEMENT" />
+    <EntitySet Name="CONTENANTS" EntityType="Self.CONTENANTS" />
+    <EntitySet Name="CONTENANTSPARCARTON" EntityType="Self.CONTENANTSPARCARTON" />
+    <EntitySet Name="COULEURS" EntityType="Self.COULEURS" />
+    <EntitySet Name="FABRICATION" EntityType="Self.FABRICATION" />
+    <EntitySet Name="LIGNESCOMMANDES" EntityType="Self.LIGNESCOMMANDES" />
+    <EntitySet Name="PAYS" EntityType="Self.PAYS" />
+    <EntitySet Name="PRIX" EntityType="Self.PRIX" />
+    <EntitySet Name="TEXTURES" EntityType="Self.TEXTURES" />
+    <EntitySet Name="TRANSPORTS" EntityType="Self.TRANSPORTS" />
+    <EntitySet Name="VARIANTES" EntityType="Self.VARIANTES" />
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDBONBON" Association="Self.FK_LIGNESCOMMANDES_IDBONBON">
+      <End Role="BONBONS" EntitySet="BONBONS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRIX_IDBONBON" Association="Self.FK_PRIX_IDBONBON">
+      <End Role="BONBONS" EntitySet="BONBONS" />
+      <End Role="PRIX" EntitySet="PRIX" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARTONSPARPALETTE_IDTRANSPORT" Association="Self.FK_CARTONSPARPALETTE_IDTRANSPORT">
+      <End Role="TRANSPORTS" EntitySet="TRANSPORTS" />
+      <End Role="CARTONSPARPALETTE" EntitySet="CARTONSPARPALETTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMANDES_IDPAYS" Association="Self.FK_COMMANDES_IDPAYS">
+      <End Role="PAYS" EntitySet="PAYS" />
+      <End Role="COMMANDES" EntitySet="COMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCOMMANDE" Association="Self.FK_LIGNESCOMMANDES_IDCOMMANDE">
+      <End Role="COMMANDES" EntitySet="COMMANDES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONDITIONNEMENT_IDCONTENANT" Association="Self.FK_CONDITIONNEMENT_IDCONTENANT">
+      <End Role="CONTENANTS" EntitySet="CONTENANTS" />
+      <End Role="CONDITIONNEMENT" EntitySet="CONDITIONNEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDMACHINECONDI" Association="Self.FK_LIGNESCOMMANDES_IDMACHINECONDI">
+      <End Role="CONDITIONNEMENT" EntitySet="CONDITIONNEMENT" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENANTSPARCARTON_IDCONTENANT" Association="Self.FK_CONTENANTSPARCARTON_IDCONTENANT">
+      <End Role="CONTENANTS" EntitySet="CONTENANTS" />
+      <End Role="CONTENANTSPARCARTON" EntitySet="CONTENANTSPARCARTON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCONTENANT" Association="Self.FK_LIGNESCOMMANDES_IDCONTENANT">
+      <End Role="CONTENANTS" EntitySet="CONTENANTS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRIX_IDCONTENANT" Association="Self.FK_PRIX_IDCONTENANT">
+      <End Role="CONTENANTS" EntitySet="CONTENANTS" />
+      <End Role="PRIX" EntitySet="PRIX" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDCOULEUR" Association="Self.FK_LIGNESCOMMANDES_IDCOULEUR">
+      <End Role="COULEURS" EntitySet="COULEURS" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FABRICATION_IDVARIANTE" Association="Self.FK_FABRICATION_IDVARIANTE">
+      <End Role="VARIANTES" EntitySet="VARIANTES" />
+      <End Role="FABRICATION" EntitySet="FABRICATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDMACHINEFAB" Association="Self.FK_LIGNESCOMMANDES_IDMACHINEFAB">
+      <End Role="FABRICATION" EntitySet="FABRICATION" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDTEXTURE" Association="Self.FK_LIGNESCOMMANDES_IDTEXTURE">
+      <End Role="TEXTURES" EntitySet="TEXTURES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIGNESCOMMANDES_IDVARIANTE" Association="Self.FK_LIGNESCOMMANDES_IDVARIANTE">
+      <End Role="VARIANTES" EntitySet="VARIANTES" />
+      <End Role="LIGNESCOMMANDES" EntitySet="LIGNESCOMMANDES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAYS_IDTRANSPORT" Association="Self.FK_PAYS_IDTRANSPORT">
+      <End Role="TRANSPORTS" EntitySet="TRANSPORTS" />
+      <End Role="PAYS" EntitySet="PAYS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

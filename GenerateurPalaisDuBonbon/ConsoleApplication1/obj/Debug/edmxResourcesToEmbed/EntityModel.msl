@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="BONBONS">
+      <EntityTypeMapping TypeName="Model.BONBONS">
+        <MappingFragment StoreEntitySet="BONBONS">
+          <ScalarProperty Name="LASTREPARTITIONBONBON" ColumnName="LASTREPARTITIONBONBON" />
+          <ScalarProperty Name="FRAISGENERAUX" ColumnName="FRAISGENERAUX" />
+          <ScalarProperty Name="FRAISEXPEDITION" ColumnName="FRAISEXPEDITION" />
+          <ScalarProperty Name="COUTCONDITIONNEMENT" ColumnName="COUTCONDITIONNEMENT" />
+          <ScalarProperty Name="COUTFABRICATION" ColumnName="COUTFABRICATION" />
+          <ScalarProperty Name="IDBONBON" ColumnName="IDBONBON" />
+          <ScalarProperty Name="NOMBONBON" ColumnName="NOMBONBON" />
+          <ScalarProperty Name="ADDITIFSBONBON" ColumnName="ADDITIFSBONBON" />
+          <ScalarProperty Name="ENROBAGEBONBON" ColumnName="ENROBAGEBONBON" />
+          <ScalarProperty Name="AROMEBONBON" ColumnName="AROMEBONBON" />
+          <ScalarProperty Name="GELIFIANTSBONBON" ColumnName="GELIFIANTSBONBON" />
+          <ScalarProperty Name="SUCREBONBON" ColumnName="SUCREBONBON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARTONSPARPALETTE">
+      <EntityTypeMapping TypeName="Model.CARTONSPARPALETTE">
+        <MappingFragment StoreEntitySet="CARTONSPARPALETTE">
+          <ScalarProperty Name="IDCARTONPALETTE" ColumnName="IDCARTONPALETTE" />
+          <ScalarProperty Name="NBCARTONPPALETTE" ColumnName="NBCARTONPPALETTE" />
+          <ScalarProperty Name="IDTRANSPORT" ColumnName="IDTRANSPORT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMANDES">
+      <EntityTypeMapping TypeName="Model.COMMANDES">
+        <MappingFragment StoreEntitySet="COMMANDES">
+          <ScalarProperty Name="TEMPSPICKING" ColumnName="TEMPSPICKING" />
+          <ScalarProperty Name="TEMPSCONDITOTAL" ColumnName="TEMPSCONDITOTAL" />
+          <ScalarProperty Name="TEMPSFABTOTAL" ColumnName="TEMPSFABTOTAL" />
+          <ScalarProperty Name="IDCOMMANDE" ColumnName="IDCOMMANDE" />
+          <ScalarProperty Name="NUMCOMMANDE" ColumnName="NUMCOMMANDE" />
+          <ScalarProperty Name="DATECOMMANDE" ColumnName="DATECOMMANDE" />
+          <ScalarProperty Name="IDPAYS" ColumnName="IDPAYS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONDITIONNEMENT">
+      <EntityTypeMapping TypeName="Model.CONDITIONNEMENT">
+        <MappingFragment StoreEntitySet="CONDITIONNEMENT">
+          <ScalarProperty Name="IDMACHINECONDI" ColumnName="IDMACHINECONDI" />
+          <ScalarProperty Name="NOMMACHINECONDI" ColumnName="NOMMACHINECONDI" />
+          <ScalarProperty Name="CADENCEMACHINECONDI" ColumnName="CADENCEMACHINECONDI" />
+          <ScalarProperty Name="DELAIMACHINECONDI" ColumnName="DELAIMACHINECONDI" />
+          <ScalarProperty Name="IDCONTENANT" ColumnName="IDCONTENANT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTENANTS">
+      <EntityTypeMapping TypeName="Model.CONTENANTS">
+        <MappingFragment StoreEntitySet="CONTENANTS">
+          <ScalarProperty Name="IDCONTENANT" ColumnName="IDCONTENANT" />
+          <ScalarProperty Name="NOMCONTENANT" ColumnName="NOMCONTENANT" />
+          <ScalarProperty Name="NBBONBONS" ColumnName="NBBONBONS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTENANTSPARCARTON">
+      <EntityTypeMapping TypeName="Model.CONTENANTSPARCARTON">
+        <MappingFragment StoreEntitySet="CONTENANTSPARCARTON">
+          <ScalarProperty Name="IDCONTENANTPCARTON" ColumnName="IDCONTENANTPCARTON" />
+          <ScalarProperty Name="NBCONTENANTPCARTON" ColumnName="NBCONTENANTPCARTON" />
+          <ScalarProperty Name="IDCONTENANT" ColumnName="IDCONTENANT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COULEURS">
+      <EntityTypeMapping TypeName="Model.COULEURS">
+        <MappingFragment StoreEntitySet="COULEURS">
+          <ScalarProperty Name="IDCOULEUR" ColumnName="IDCOULEUR" />
+          <ScalarProperty Name="NOMCOULEUR" ColumnName="NOMCOULEUR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FABRICATION">
+      <EntityTypeMapping TypeName="Model.FABRICATION">
+        <MappingFragment StoreEntitySet="FABRICATION">
+          <ScalarProperty Name="IDMACHINEFAB" ColumnName="IDMACHINEFAB" />
+          <ScalarProperty Name="NOMMACHINEFAB" ColumnName="NOMMACHINEFAB" />
+          <ScalarProperty Name="CADENCEMACHINEFAB" ColumnName="CADENCEMACHINEFAB" />
+          <ScalarProperty Name="DELAIMACHINEFAB" ColumnName="DELAIMACHINEFAB" />
+          <ScalarProperty Name="IDVARIANTE" ColumnName="IDVARIANTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIGNESCOMMANDES">
+      <EntityTypeMapping TypeName="Model.LIGNESCOMMANDES">
+        <MappingFragment StoreEntitySet="LIGNESCOMMANDES">
+          <ScalarProperty Name="IDCONTENUCOMMANDE" ColumnName="IDCONTENUCOMMANDE" />
+          <ScalarProperty Name="NBCONTENANTS" ColumnName="NBCONTENANTS" />
+          <ScalarProperty Name="TEMPSFAB" ColumnName="TEMPSFAB" />
+          <ScalarProperty Name="TEMPSCONDI" ColumnName="TEMPSCONDI" />
+          <ScalarProperty Name="IDCOMMANDE" ColumnName="IDCOMMANDE" />
+          <ScalarProperty Name="IDCONTENANT" ColumnName="IDCONTENANT" />
+          <ScalarProperty Name="IDBONBON" ColumnName="IDBONBON" />
+          <ScalarProperty Name="IDVARIANTE" ColumnName="IDVARIANTE" />
+          <ScalarProperty Name="IDTEXTURE" ColumnName="IDTEXTURE" />
+          <ScalarProperty Name="IDCOULEUR" ColumnName="IDCOULEUR" />
+          <ScalarProperty Name="IDMACHINEFAB" ColumnName="IDMACHINEFAB" />
+          <ScalarProperty Name="IDMACHINECONDI" ColumnName="IDMACHINECONDI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYS">
+      <EntityTypeMapping TypeName="Model.PAYS">
+        <MappingFragment StoreEntitySet="PAYS">
+          <ScalarProperty Name="LASTREPARTITIONPAYS" ColumnName="LASTREPARTITIONPAYS" />
+          <ScalarProperty Name="IDPAYS" ColumnName="IDPAYS" />
+          <ScalarProperty Name="NOMPAYS" ColumnName="NOMPAYS" />
+          <ScalarProperty Name="IDTRANSPORT" ColumnName="IDTRANSPORT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRIX">
+      <EntityTypeMapping TypeName="Model.PRIX">
+        <MappingFragment StoreEntitySet="PRIX">
+          <ScalarProperty Name="IDPRIX" ColumnName="IDPRIX" />
+          <ScalarProperty Name="PRIX1" ColumnName="PRIX" />
+          <ScalarProperty Name="IDCONTENANT" ColumnName="IDCONTENANT" />
+          <ScalarProperty Name="IDBONBON" ColumnName="IDBONBON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEXTURES">
+      <EntityTypeMapping TypeName="Model.TEXTURES">
+        <MappingFragment StoreEntitySet="TEXTURES">
+          <ScalarProperty Name="IDTEXTURE" ColumnName="IDTEXTURE" />
+          <ScalarProperty Name="NOMTEXTURE" ColumnName="NOMTEXTURE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSPORTS">
+      <EntityTypeMapping TypeName="Model.TRANSPORTS">
+        <MappingFragment StoreEntitySet="TRANSPORTS">
+          <ScalarProperty Name="IDTRANSPORT" ColumnName="IDTRANSPORT" />
+          <ScalarProperty Name="NOMTRANSPORT" ColumnName="NOMTRANSPORT" />
+          <ScalarProperty Name="COUTTRANSPORT" ColumnName="COUTTRANSPORT" />
+          <ScalarProperty Name="CONTENANCETRANSPORT" ColumnName="CONTENANCETRANSPORT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VARIANTES">
+      <EntityTypeMapping TypeName="Model.VARIANTES">
+        <MappingFragment StoreEntitySet="VARIANTES">
+          <ScalarProperty Name="IDVARIANTE" ColumnName="IDVARIANTE" />
+          <ScalarProperty Name="NOMVARIANTE" ColumnName="NOMVARIANTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -8,26 +8,28 @@ namespace GenerateurPalaisDuBonbon
 {
     class LigneDeCommande
     {
+        
+        public int nombreConditionnements { get; set; }
+        public int nomBonbon { get; set; }
+        public int couleur { get; set; }
+        public int variante { get; set; }
+        public Machine machineFab { get; set; }
+        public Machine machineCond { get; set; }
+        public int texture { get; set; }
+        public int conditionnement { get; set; }
+        public int idCommande { get; set; }
+        public Boolean estEmpaquetee { get; set; }
 
-        private int nombre, nomBonbon, couleur, variante, texture, conditionnement, machine, idCommande;
-
-        public int Nombre { get; set; }
-        public int NomBonbon { get; set; }
-        public int Couleur { get; set; }
-        public int Variante { get; set; }
-        public Machine Machine { get; set; }
-        public int Texture { get; set; }
-        public int Conditionnement { get; set; }
-        public int IdCommande { get; set; }
-
-        public LigneDeCommande(int idCommande, int nomBonbon, int couleur, int variante, int texture, int conditionnement)
+        public LigneDeCommande(int idCommande, int nombreConditionnements, int nomBonbon, int couleur, int variante, int texture, int conditionnement)
         {
-            idCommande = this.idCommande;
-            nomBonbon = this.nomBonbon;
-            couleur = this.couleur;
-            variante = this.variante;
-            texture = this.texture;
-            conditionnement = this.conditionnement;
+            this.idCommande = idCommande;
+            this.nombreConditionnements = nombreConditionnements;
+            this.nomBonbon = nomBonbon;
+            this.couleur = couleur;
+            this.variante = variante;
+            this.texture = texture;
+            this.conditionnement = conditionnement;
+            this.estEmpaquetee = false;
         }
     }
 }
