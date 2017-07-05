@@ -148,6 +148,7 @@ CREATE TABLE Commandes(
         idPays       NUMBER NOT NULL ,
         tempsFabTotal      NUMBER NULL ,
         tempsCondiTotal      NUMBER NULL ,
+        tempsPicking      NUMBER NULL ,
         CONSTRAINT PK_COMMANDES PRIMARY KEY (idCommande )
 )
 /
