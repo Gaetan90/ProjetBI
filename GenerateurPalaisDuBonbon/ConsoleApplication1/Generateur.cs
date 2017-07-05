@@ -18,8 +18,24 @@ namespace GenerateurPalaisDuBonbon
         public static Random rnd = new Random();
 
         /**
-            * Création d'une "pool" de commandes pour le simulateur. (Liste de commandes)
-            */
+         * Création d'une "pool" de commandes pour le simulateur. (Liste de commandes)
+         */
+        public static List<Commande> PoolAleatoireCreation()
+        {
+            List<Commande> pool = new List<Commande>();
+            int idcommandes = 1000; // On démarre les ID par 1000
+
+            for (int i = 0; i < 10; i++)
+            {
+                pool.Add(commandeAleatoireCreation(idcommandes + i));
+            }
+            
+            return pool;
+        }
+
+        /**
+         * Création d'une "pool" de commandes pour le simulateur. (Liste de commandes)
+         */
         public static List<Commande> PoolCreation()
         {
             List<Commande> pool = new List<Commande>();
@@ -27,13 +43,82 @@ namespace GenerateurPalaisDuBonbon
 
             for (int i = 0; i < 10; i++)
             {
-                pool.Add(CommandeCreation(idcommandes + i));
+                pool.Add(commandeCreation(idcommandes + i));
             }
-            
+
             return pool;
         }
 
-        public static Commande CommandeCreation(int idcommande)
+        /**
+         * Renvoie l'ID d'un pays générée aléatoirement à l'aide des pondérations
+         * présentes dans le fichier de configuration
+         */
+        public static int genererPays()
+        {
+
+            int ratioTotal;
+            double resultatProba;
+            double trancheLimite;
+            IDictionary<int, double> dictionnaire = new Dictionary<int, double>();
+            int paysMax = int.Parse(ConfigurationManager.AppSettings["paysMax"]);
+
+            for (int j = 1; j < (paysMax + 1); j++)
+            {
+                dictionnaire.Add(j, double.Parse(ConfigurationManager.AppSettings[("probaPays" + j).ToString()]));
+            }
+
+            ratioTotal = 100; // on travaille en pourcentage
+            resultatProba = rnd.NextDouble() * ratioTotal;
+            trancheLimite = 0;
+            foreach (KeyValuePair<int, double> kvp in dictionnaire)
+            {
+                trancheLimite += kvp.Value;
+                if (resultatProba <= trancheLimite)
+                {
+                    return kvp.Key;
+                }
+            }
+            return paysMax; // retourne la dernière valeur au cas où aucune de celles d'avant n'aient été retournées
+        }
+
+        public static Commande commandeCreation(int idcommande)
+        {
+            int nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement;
+
+            int nomBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreTypesBonbons"]);
+            int couleurBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreCouleursBonbons"]);
+            int varianteBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreVariantesBonbons"]);
+            int textureBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreTexturesBonbons"]);
+            int conditionnementBonbonMax = int.Parse(ConfigurationManager.AppSettings["nombreConditionnementsBonbons"]);
+            
+            
+            Commande commande = new Commande(idcommande, dateCommande, genererPays());
+            LigneDeCommande temp;
+
+            // On génère aléatoirement entre une et dix lignes par commandes
+            for (int i = 0; i < rnd.Next(1, 10); i++)
+            {
+                // On génère les valeurs aléatoirement
+                nombreBonbons = rnd.Next(1, 51);
+                nomBonbon = rnd.Next(1, nomBonbonMax + 1);
+                couleur = rnd.Next(1, couleurBonbonMax + 1);
+                variante = rnd.Next(1, varianteBonbonMax + 1);
+                texture = rnd.Next(1, textureBonbonMax + 1);
+                conditionnement = rnd.Next(1, conditionnementBonbonMax + 1);
+
+
+                temp = new LigneDeCommande(idcommande, nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement);
+
+                //Console.WriteLine("[" + idcommande + "," + nombreBonbons + "," + nomBonbon + "," + couleur + "," + variante + "," + texture +
+                //                                                            "," + conditionnement + "]\n"); // Pour les tests
+
+                commande.ajouterLigne(temp);
+            }
+
+            return commande;
+        }
+
+        public static Commande commandeAleatoireCreation(int idcommande)
         {
             int nombreBonbons, nomBonbon, couleur, variante, texture, conditionnement, pays;
 
