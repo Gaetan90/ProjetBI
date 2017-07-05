@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -245,18 +246,66 @@ namespace GenerateurPalaisDuBonbon
             return resultat;
         }
 
-        public double simulerPickingCommande(Commande commande)
+        public static void simulerPickingCommande(Commande commande)
         {
-            // nombre de secondes nécessaires au minimum par Carton pour faire toute la chaine
-            // le temps d'une boucle étant réduit à 380 secondes au lieu de 400 secondes
-            // pour le simulateur puisque nous comptons déjà les 20 secondes étant rajoutées
-            // en cas de non-redirection d'un carton dans une boucle.
-            double resultat = 200 * commande.nbLignes;
+            Random rnd = new Random();
+            List<int> listGare = new List<int>();
+            int lastGare = 0;
+            int x = 0;
+            int tmpCommande = 40;
 
-            // création des docks
-            //List<Dock> docks = genererDocks();
+            for (int i = 1; i < commande.nbLignes; i++)
+            {
+                // On choisi autant de gare qu'il y a de ligne de commande aléatoiremant
+                listGare.Add(rnd.Next(1, 41));
+            }
+            // on les trie par ordre croissant
+            listGare.Sort();
 
-            return resultat;
+            // On parcours les différentes gare de destination
+            foreach(int gare in listGare)
+            {
+                // Si on est dans le premier pole de gare
+                if (gare < 21)
+                {
+                    if(x == 0) // première ligne de commande
+                    {
+                        tmpCommande += gare * 20 + 10;
+                    }else
+                    {
+                        // On calcul le temps entre la gare de destination et la précédente
+                        tmpCommande += (gare - lastGare) * 20 + 10;
+                    }
+                    
+                }else
+                {
+                    if (x == 0) // première ligne de commande
+                    {
+                        tmpCommande += 20 + 80 + gare * 20 + 10;
+                    }else
+                    {
+                        if(lastGare < 21)
+                        {
+                            // On calcul le temps entre le pole précédent et le suivant et la gare de destination et la précédente
+                            tmpCommande += 80 + (gare - lastGare) * 10 + 10;
+                        }else
+                        {
+                            // On calcul le temps entre la gare de destination et la précédente
+                            tmpCommande += (gare - lastGare) * 10 + 10;
+                        }
+                    }
+
+                    
+                }
+                lastGare = gare;
+                x++;
+                
+            }
+            // On ajoute le temsp de sorti du picking
+            tmpCommande += 40;
+
+            commande.tempsPicking = tmpCommande;
+
         }
     }
 }
