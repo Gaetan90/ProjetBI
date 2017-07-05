@@ -1,0 +1,38 @@
+--------------------------------------------------------
+--  TABLE PAYS   
+--------------------------------------------------------
+
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Allemagne','1','8,11');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Autriche','1','6,51');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Belgique','1','9,84');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Bulgarie','1','0,13');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Chypre','1','0,02');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Croatie','1','0,36');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Danemark','1','3,63');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Espagne','1','4,51');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Estonie','1','0,15');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Finlande','1','2,87');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('France','1','29,63');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Grèce','1','0,16');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Hongrie','1','0,12');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Irelande','1','5,10');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Italie','1','4,12');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Lettonie','1','0,89');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Lituanie','1','0,97');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Luxembourg','1','3,65');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Malte','1','0,15');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Pays-Bas','1','2,20');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Pologne','1','0,91');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Portugal','1','1,20');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('République tchèque','1','0,51');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Roumanie','1','0,10');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Royaume-Uni','1','3,84');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Slovaquie','1','0,16');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Slovénie','1','0,84');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Suède','1','1,01');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('USA','2','4,50');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Canada','2','1,74');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Mexique','2','0,13');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Japon','3','0,01');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Chine','2','1,10');
+Insert into PAYS (NOMPAYS,IDTRANSPORT,LASTREPARTITIONPAYS) values ('Afrique du sud','3','0,83');
