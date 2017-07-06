@@ -1,0 +1,1 @@
+sqlplus c##exiaOracle/Azerty123@orcl @C:\Users\admin\Documents\script_delete.sql
