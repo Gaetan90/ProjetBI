@@ -245,6 +245,8 @@ namespace GenerateurPalaisDuBonbon
                         tmpLigne.NBCONTENANTS = ligne.nombreConditionnements;
                         tmpLigne.IDMACHINEFAB = ligne.machineFab.idMachine;
                         tmpLigne.IDMACHINECONDI = ligne.machineCond.idMachine;
+                        tmpLigne.TEMPSFAB = ligne.tempsFab;
+                        tmpLigne.TEMPSCONDI = ligne.tempsCondi;
                         tmpLigne.IDCONTENANT = ligne.conditionnement;
                         tmpLigne.IDBONBON = ligne.nomBonbon;
                         tmpLigne.IDVARIANTE = ligne.variante;
