@@ -24,9 +24,6 @@ D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApp
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\EntityFramework.xml
 D:\Exia A3\projet BI\Git repository\ProjetBI\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\EntityFramework.SqlServer.xml
-C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
 C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 C:\Projet3\GenerateurPalaisDuBonbon\ConsoleApplication1\bin\Debug\EntityFramework.dll
