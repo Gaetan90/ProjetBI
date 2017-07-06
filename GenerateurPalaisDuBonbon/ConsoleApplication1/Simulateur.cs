@@ -87,6 +87,10 @@ namespace GenerateurPalaisDuBonbon
                         multiplicateur = 1;
                     }
                     resultat += (machine.cadence * ligne.nombreConditionnements * multiplicateur);
+
+                    // on place le temps de fabrication de la ligne dans l'attribut
+                    ligne.tempsFab = (int) (machine.cadence * ligne.nombreConditionnements * multiplicateur);
+
                     if (ligne.nomBonbon != machine.tete)
                     {
                         resultat += machine.delai;
@@ -207,6 +211,10 @@ namespace GenerateurPalaisDuBonbon
                         multiplicateur = 1;
                     }
                     resultat += (machine.cadence * ligne.nombreConditionnements * multiplicateur);
+
+                    // on place le temps de fabrication de la ligne dans l'attribut
+                    ligne.tempsFab = (int)(machine.cadence * ligne.nombreConditionnements * multiplicateur);
+
                     if (ligne.nomBonbon != machine.tete)
                     {
                         resultat += machine.delai;

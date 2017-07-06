@@ -18,6 +18,8 @@ namespace GenerateurPalaisDuBonbon
         public int texture { get; set; }
         public int conditionnement { get; set; }
         public int idCommande { get; set; }
+        public int tempsFab { get; set; }
+        public int tempsCondi { get; set; }
         public Boolean estEmpaquetee { get; set; }
 
         public LigneDeCommande(int idCommande, int nombreConditionnements, int nomBonbon, int couleur, int variante, int texture, int conditionnement)
